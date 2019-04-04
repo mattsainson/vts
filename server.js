@@ -4,30 +4,35 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 var PORT = process.env.PORT || 3000;
 var app = express();
-var passport   = require('passport');
-var session    = require('express-session');
+var passport = require("passport");
+var session = require("express-session");
 //Models
 var models = require("./models");
 //load passport strategies
-require('./config/passport.js')(passport, models.user);
- //Sync Database
-models.sequelize.sync().then(function() {
-    console.log('Nice! Database looks fine');
-}).catch(function(err) {
+require("./config/passport.js")(passport, models.user);
+//Sync Database
+models.sequelize
+  .sync()
+  .then(function() {
+    console.log("Nice! Database looks fine");
+  })
+  .catch(function(err) {
     console.log(err, "Something went wrong with the Database Update!");
+  });
+
+app.get("/", function(req, res) {
+  res.send("Welcome to VTS");
 });
 
-app.get('/', function(req, res) {
-  res.send('Welcome to VTS');
- });
- 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
 // Middleware For Passport
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
@@ -41,7 +46,8 @@ app.engine(
 );
 
 // Routes
-var authRoute = require('./routes/auth')(app, passport);
+// eslint-disable-next-line no-unused-vars
+var authRoute = require("./routes/auth")(app, passport);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
