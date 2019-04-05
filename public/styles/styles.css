@@ -1,3 +1,17 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.teal {
+  background-color: #C5FDE3;
+}
+
+.yellow {
+  background-color: #F7F36E;
+  margin-top: 10px;
+}
+
+.red {
+  background-color: #D34246;
+  margin-top: 10px;
+}
