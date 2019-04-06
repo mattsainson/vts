@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
-<body>
+<body background="./assets/images/geometry2.png">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="dashboard.html">VTS</a>
@@ -37,8 +37,14 @@
   <div id="dashboard" class="container">
 
     <a href="request.html">
-      <div id="to-request" class="blue dashboard-item">
-        <p class="teal">Request Appointment +</p>
+      <div id="to-request" class="blue dashboard-item student">
+        <h2 class="teal">Request Appointment +</h2>
+      </div>
+    </a>
+
+    <a href="request.html">
+      <div id="create-workshop" class="blue dashboard-item tutor">
+        <h2 class="teal">Create Workshop +</h2>
       </div>
     </a>
 
@@ -52,15 +58,30 @@
 
   </div> <!--end dashboard-->
 
-  <script type="text/javascript">
-    $('#to-request').on('click', function() {
-
-    });
-  </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+  
+  var userID = 
+    $('#to-request').on('click', function() {
+
+      // Get appointments 
+      $.get(URL + '/appts/getappointments/' + userID, function(data, err) {
+        if (err) {
+          throw (err)
+        } else {
+          return(data);
+        }
+      }).then(function() {
+        var appointments = data.appointments
+      });
+      
+    });
+
+  </script>
 
 </body>
 </html>

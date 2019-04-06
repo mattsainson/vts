@@ -1,46 +1,64 @@
+
 .container {
   /* padding: 25px; */
   margin-top: 10px;
 }
 
+.row {
+  height: auto;
+}
+
 div.teal {
-  background-color: #C5FDE3;
+  background-color: rgba(197, 253, 227, 1);
 }
 
 div.yellow {
-  background-color: #F7F36E;
+  background-color: rgba(247, 243, 110, 1);
 }
 
 div.orange {
-  background-color: #E25238;
+  background-color: rgba(226, 82, 56, 1);
 }
 
 div.red {
-  background-color: #D34246;
+  background-color: rgba(211, 66, 70, 1);
 }
 
 div.blue {
-  background-color: #377C89;
+  background-color: rgba(55, 124, 137, 1);
+}
+
+h1 {
+  font-size: 22pt;
+}
+
+h2 {
+  font-size: 16pt
 }
 
 p.teal,
-h3.teal {
+h1.teal,
+h2.teal {
   color: #C5FDE3;
 }
 
-p.yellow {
+p.yellow,
+h2.yellow {
   color: #F7F36E;
 }
 
-p.orange {
+p.orange,
+h2.orange {
   color: #E25238;
 }
 
-p.red {
+p.red,
+h2.red {
   color: #D34246;
 }
 
-p.blue {
+p.blue,
+h2.blue {
   color: #377C89;
 }
 
@@ -53,7 +71,8 @@ a:hover {
 }
 
 #to-request,
-#request-appt {
+#request-appt,
+#create-workshop {
   text-align: center;
 }
 
@@ -61,5 +80,6 @@ a:hover {
   padding: 25px;
   margin-top: 10px;
 }
+
 
 

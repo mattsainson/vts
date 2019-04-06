@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
-<body>
+<body background="./assets/images/geometry2.png">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#">VTS</a>
@@ -26,7 +26,7 @@
     </div> 
   </nav>
 
-  <div class="container teal">
+  <div class="container teal dashboard-item">
     <form action="POST">
       <div class="form-group">
         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
@@ -34,25 +34,51 @@
       <div class="form-group">
         <input type="password" class="form-control" id="password" placeholder="password">
       </div>
-      <button type="submit" class="btn btn-primary">Log In</button>
+      <button type="submit" class="btn btn-primary" id="login">Log In</button>
     </form>
   </div>
 
 
-  <div class="container yellow">
+  <div class="container yellow dashboard-item">
   </div>
 
 
-  <div class="container red">
+  <div class="container red dashboard-item">
     <a href="#">Powered by #</a>
     <a href="https://github.com/mattsainson/vts">github repository</a>
   </div>
-
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+  
+    $('#login').on('click', function() {
+      event.preventDefault();
+      login();
+    });
+
+    function login() {
+
+      var user = {
+        email: $('#email').val().trim(),
+        password: $('#password').val().trim()
+      }
+      var URL = 'https://agile-earth-56750.herokuapp.com/';
+      
+      $.post(URL + '/acct/login', user, function(data, err) {
+        if (err) {
+          throw (err)
+        } else {
+          return(data)
+        }
+      });
+
+    }
+  
+  </script>
 
 </body>
 </html>
