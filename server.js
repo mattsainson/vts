@@ -1,4 +1,4 @@
-require("dotenv").config();
+var env = require("dotenv").config();
 var express = require("express");
 // var exphbs = require("express-handlebars");
 var passport = require("passport");
@@ -45,12 +45,12 @@ app.use(passport.session()); // persistent login sessions
 
 // Routes
 // eslint-disable-next-line no-unused-vars
-var authRoute = require("./routes/auth")(app, passport);
+// var authRoute = require("./routes/auth")(app, passport);
 require("./routes/htmlRoutes")(app);
-require("./routes/app")(app);
-require("./routes/user")(app);
-require("./routes/appt")(app);
-require("./routes/request")(app);
+require("./routes/app")(app, passport);
+require("./routes/user")(app, passport);
+require("./routes/appt")(app, passport);
+require("./routes/request")(app, passport);
 
 var syncOptions = { force: true };
 

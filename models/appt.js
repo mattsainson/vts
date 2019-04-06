@@ -33,6 +33,17 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             defaultValue: 0,
             allowNull: false
+        },
+        maxAttendees: {
+            type: DataTypes.INTEGER,
+            defaultValue: 2,
+            allowNull: false
+        },
+        apptState: {
+            type: DataTypes.STRING,
+            defaultValue: 'scheduled',
+            allowNull: false,
+            notEmpty: true
         }
     });
     return Appt;
