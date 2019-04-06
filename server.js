@@ -1,17 +1,19 @@
 require("dotenv").config();
 var express = require("express");
-var exphbs = require("express-handlebars");
-var db = require("./models");
-var PORT = process.env.PORT || 3000;
-var app = express();
+// var exphbs = require("express-handlebars");
 var passport = require("passport");
 var session = require("express-session");
-//Models
-var models = require("./models");
+var db = require("./models");
+
+var PORT = process.env.PORT || 3000;
+
+var app = express();
+
 //load passport strategies
-require("./config/passport.js")(passport, models.user);
+require("./config/passport.js")(passport, db.user);
+
 //Sync Database
-models.sequelize
+db.sequelize
   .sync()
   .then(function() {
     console.log("Nice! Database looks fine");
@@ -19,10 +21,6 @@ models.sequelize
   .catch(function(err) {
     console.log(err, "Something went wrong with the Database Update!");
   });
-
-app.get("/", function(req, res) {
-  res.send("Welcome to VTS");
-});
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -37,21 +35,24 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 // Handlebars
-app.set("view engine", "handlebars");
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
+// app.set("view engine", "handlebars");
+// app.engine(
+//   "handlebars",
+//   exphbs({
+//     defaultLayout: "main"
+//   })
+// );
 
 // Routes
 // eslint-disable-next-line no-unused-vars
-var authRoute = require("./routes/auth")(app, passport);
-require("./routes/apiRoutes")(app);
+// var authRoute = require("./routes/auth")(app, passport);
 require("./routes/htmlRoutes")(app);
+require("./routes/app")(app, passport);
+require("./routes/user")(app, passport);
+require("./routes/appt")(app, passport);
+require("./routes/request")(app, passport);
 
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
