@@ -2,7 +2,7 @@
   "development": {
     "username": "vts",
     "password": "vts",
-    "database": "exampledb",
+    "database": "vts",
     "host": "localhost",
     "dialect": "mysql"
   },

@@ -9,9 +9,7 @@ module.exports = function(passport, user) {
     new LocalStrategy(
       {
         usernameField: "email",
-
         passwordField: "password",
-
         passReqToCallback: true // allows us to pass back the entire request to the callback
       },
 
@@ -27,18 +25,14 @@ module.exports = function(passport, user) {
         }).then(function(user) {
           if (user) {
             return done(null, false, {
-              message: "That email is already taken"
+              message: "This account is already in use."
             });
           } else {
-            var userPassword = generateHash(password);
+            var password = generateHash(password);
             var data = {
               email: email,
-
-              password: userPassword,
-
-              firstname: req.body.firstname,
-
-              lastname: req.body.lastname
+              password: password,
+              name: req.body.name
             };
             // eslint-disable-next-line no-unused-vars
             User.create(data).then(function(newUser, created) {
@@ -76,9 +70,7 @@ module.exports = function(passport, user) {
       {
         // by default, local strategy uses username and password, we will override with email
         usernameField: "email",
-
         passwordField: "password",
-
         passReqToCallback: true // allows us to pass back the entire request to the callback
       },
 
@@ -95,12 +87,12 @@ module.exports = function(passport, user) {
           .then(function(user) {
             if (!user) {
               return done(null, false, {
-                message: "Email does not exist"
+                message: "The email provided is not valid."
               });
             }
             if (!isValidPassword(user.password, password)) {
               return done(null, false, {
-                message: "Incorrect password."
+                message: "Your password is not correct."
               });
             }
             var userinfo = user.get();
@@ -109,7 +101,7 @@ module.exports = function(passport, user) {
           .catch(function(err) {
             console.log("Error:", err);
             return done(null, false, {
-              message: "Something went wrong with your Signin"
+              message: "Something went wrong with your signin."
             });
           });
       }
