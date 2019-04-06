@@ -30,10 +30,14 @@ module.exports = function (sequelize, DataTypes) {
             notEmpty: true,
             allowNull: false,
             validate: {
-
             }
         },
         apptId: {
+            type: DataTypes.INTEGER,
+            default: 0,
+            allowNull: false
+        },
+        tutorId: {
             type: DataTypes.INTEGER,
             default: 0,
             allowNull: false

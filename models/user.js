@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     constraints: {
-      type: DataTypes.JSONTYPE,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     rank: {

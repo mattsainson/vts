@@ -2,15 +2,15 @@
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    res.render("index", {
-      msg: "Welcome!"
-    });
+    res.redirect("login");
+  });
+
+  app.get("/login", function (req, res) {
+    res.render("login");
   });
 
   app.get("/signup", function (req, res) {
-    res.render("signup", {
-      msg: "Signup!"
-    });
+    res.render("signup");
   });
 
   // Render 404 page for any unmatched routes
