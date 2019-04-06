@@ -20,8 +20,8 @@ module.exports = function (app, passport) {
             .then(function (err, user) {
                 if (user.id === 0) {
                     //no match for email
-                    var clearPassword = req.body.password;
-                    // var hashPassword = (clearPassword);
+                    console.log(req.body.password);
+                    var hashPassword = "(clearPassword)";
                     db.Users.create({
                         email: req.body.email,
                         password: hashPassword,
@@ -50,7 +50,7 @@ module.exports = function (app, passport) {
     passport.authenticate("local-signup", {
         successRedirect: "/dashboard",
         failureRedirect: "/signup"
-    })
+    });
     // );
 
     // app.get("/dashboard", isLoggedIn, authController.dashboard);
