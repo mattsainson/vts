@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VTS | Request</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="dashboard.html">VTS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="dashboard.html">Dashboard</a>
+          <a class="nav-item nav-link" href="workshops.html">Workshops</a>
+          <a class="nav-item nav-link active" href="request.html">Request</a>
+          <li class="nav-item dropdown">
+            <a id="user" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="profile.html">Profile</a>
+              <div class="dropdown-divider"></div>
+              <a id="logout" class="dropdown-item" href="#">Log Out</a>
+            </div>
+          </li>
+        </div>
+      </div>
+    </div> 
+  </nav>
+
+  <div class="container teal dashboard-item">
+    <form id="signup" name="signup" method="post" action="/signup">
+      <label for="date">Date</label>
+      <input class="text" name="date" type="date" />
+      <div class="form-group">
+        <label>Time</label>
+        <select multiple class="form-control" id="hour">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+        </select>
+        <select multiple class="form-control" id="minute">
+          <option>00</option>
+          <option>15</option>
+          <option>30</option>
+          <option>45</option>
+        </select>
+        <select multiple class="form-control" id="am/pm">
+          <option>am</option>
+          <option>pm</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  
+  <div class="container yellow dashboard-item">
+    <label>Subject</label>
+    <input id="math" class="btn subject" value="Math"/>  
+    <input id="science" class="btn subject" value="Science"/>  
+    <input id="english" class="btn subject" value="English"/>  
+    <input id="history" class="btn subject" value="History"/> 
+    <label for="other">Other <input name="other" type="text" /> </label>
+    
+  </div>
+
+  <div class="container orange dashboard-item">
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div id="request-appt" class="container blue dashboard-item">
+    <p class="teal">Request Appointment</p>
+  </div>
+
+  <script type="text/javascript"> 
+    $('#request-appt').on('click', function() {
+
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+</html>

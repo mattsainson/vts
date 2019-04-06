@@ -1,3 +1,65 @@
-.list-group-item {
-  line-height: 2.5;
+.container {
+  /* padding: 25px; */
+  margin-top: 10px;
 }
+
+div.teal {
+  background-color: #C5FDE3;
+}
+
+div.yellow {
+  background-color: #F7F36E;
+}
+
+div.orange {
+  background-color: #E25238;
+}
+
+div.red {
+  background-color: #D34246;
+}
+
+div.blue {
+  background-color: #377C89;
+}
+
+p.teal,
+h3.teal {
+  color: #C5FDE3;
+}
+
+p.yellow {
+  color: #F7F36E;
+}
+
+p.orange {
+  color: #E25238;
+}
+
+p.red {
+  color: #D34246;
+}
+
+p.blue {
+  color: #377C89;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#to-request,
+#request-appt {
+  text-align: center;
+}
+
+.dashboard-item {
+  padding: 25px;
+  margin-top: 10px;
+}
+
+
