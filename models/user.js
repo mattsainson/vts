@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
       notEmpty: true,
       allowNull: false
     },
-    constraints: {
+    tutorConstraints: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     status: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: true,
       allowNull: false
     }
   });
