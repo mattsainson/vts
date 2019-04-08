@@ -74,57 +74,66 @@
         } else {
           return(data);
         }
-      }).then(function() {
+      }).then(function(data) {
         var appts = data.appointments;
-        var appt = appts[i];
         for(var i = 0; i < appts.length; i++) {
-
-          var $div= $('<div class="dashboard-item">');
-          var $apptType = $('<p>');
-          var $detailsSummary = $('<p>');
-
-          if(appt.apptState === 'scheduled') {
+          var appt = appts[i];
+          var $dropdown = $('<div class="dropdown">');
+          var $div = $('<div class="dropdown-toggle dashboard-item" id="dropdownMenuButton">');
+          var $summary = $('<p>');
+          var $details = $('<div class="dropdown-menu"');
+          var $status = $('<p class="dropdown-item">');
+          var $duration = $('<p class="dropdown-item">');
+          var $tutor = $('<p class="dropdown-item">');
+          var $description = $('<p class="dropdown-item">');
+          var $url = $('<a class="dropdown-item">Appointment Video Link</a>');
+          if (appt.apptState === 'Scheduled') {
             $div.attr('class', 'teal');
-            $apptType.attr('class', 'blue');
-            $apptType.text('Scheduled Appointment');
-            $detailsSummary.attr('class', 'blue');
-            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
-            $div.append($apptType, $detailSummary);
-            $('#dashboard').append($div);
-          } else if(appts[i].apptState === 'pending') {
-            $div.attr('class', 'yellow');
-            $apptType.attr('class', 'orange');
-            $apptType.text('Pending Appointment');
-            $detailsSummary.attr('class', 'orange');
-            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
-            $div.append($apptType, $detailSummary);
-            $('#dashboard').append($div);
-          } else if(appts[i].apptState === 'canceled') {
+            $summary.attr('class', 'blue').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($summary);
+            $status.text(appt.apptState);
+            $tutor.text(data.requests.tutorId);
+            $description.text(appt.desc);
+            $url.attr('href', '');
+            $details.append($duration, $tutor, $description, $url);
+            // create cancel appt button here
+            $dropdown.append($div, $details);
+            $('#dashboard').append($dropdown);
+          } else if (appts[i].apptState === 'Canceled') {
             $div.attr('class', 'red');
-            $apptType.attr('class', 'teal');
-            $apptType.text('Canceled Appointment');
-            $detailsSummary.attr('class', 'teal');
-            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
-            $div.append($apptType, $detailSummary);
-            $('#dashboard').append($div);
-          } else if(appts[i].apptState === 'completed') {
+            $summary.attr('class', 'teal').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($summary);
+            $status.text(appt.apptState);
+            $tutor.text(data.requests.tutorId);
+            $description.text(appt.desc);
+            $details.append($duration, $tutor, $description);
+            $dropdown.append($div, $details);
+            $('#dashboard').append($dropdown);
+          } else if (appts[i].apptState === 'Complete') {
             $div.attr('class', 'grey');
-            $apptType.attr('class', 'blue');
-            $apptType.text('Pending Appointment');
-            $detailsSummary.attr('class', 'blue');
-            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
-            $div.append($apptType, $detailSummary);
-            $('#dashboard').append($div);
+            $summary.attr('class', 'blue').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($summary);
+            $status.text(appt.apptState);
+            $tutor.text(data.requests.tutorId);
+            $description.text(appt.desc);
+            $details.append($duration, $tutor, $description);
+            // create rating entry form here
+            $dropdown.append($div, $details);
+            $('#dashboard').append($dropdown);
           }
         }
 
-        $('#appointment').on('click', function() {
-          
-          this.$div.append()
-        });
+        var requests = data.requests;
+        for(var i = 0; i < requests.length; i++) {
+          var request = requests[i];
+          if (request.requestState === 'Pending') {
+
+            // create a cancel request button here
+
+          } else {return}
+        }
 
       });
-      
     });
 
   </script>
