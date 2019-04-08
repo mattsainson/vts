@@ -10,9 +10,9 @@ module.exports = function (sequelize, DataTypes) {
             notEmpty: true,
             allowNull: false
         },
-        role: {
-            type: DataTypes.STRING,
-            notEmpty: true,
+        isTutor: {
+            type: DataTypes.BOOLEAN,
+            default: false,
             allowNull: false
         },
         isHere: {
