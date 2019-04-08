@@ -1,6 +1,9 @@
+.navbar {
+  background-color: #eee;
+}
 
 .container {
-  /* padding: 25px; */
+  /* padding: 18px; */
   margin-top: 10px;
 }
 
@@ -8,28 +11,40 @@
   height: auto;
 }
 
-div.teal {
+div.teal,
+button.teal {
   background-color: rgba(197, 253, 227, 1);
+  color: rgba(55, 124, 137, 1);
 }
 
-div.yellow {
+div.yellow,
+button.yellow {
   background-color: rgba(247, 243, 110, 1);
+  color: rgba(226, 82, 56, 1);
 }
 
-div.orange {
+div.orange,
+button.orange {
   background-color: rgba(226, 82, 56, 1);
+  color: rgba(197, 253, 227, 1);
 }
 
-div.red {
+div.red,
+button.red {
   background-color: rgba(211, 66, 70, 1);
+  color: rgba(197, 253, 227, 1);
 }
 
-div.blue {
+div.blue,
+button.blue {
   background-color: rgba(55, 124, 137, 1);
+  color: rgba(197, 253, 227, 1);
 }
 
-div.grey {
-  background-color: lightgrey;
+div.grey,
+button.grey {
+  background-color: #eee;
+  color: rgba(55, 124, 137, 1);
 }
 
 h1 {
@@ -40,50 +55,72 @@ h2 {
   font-size: 16pt
 }
 
-p.teal,
-h1.teal,
-h2.teal {
-  color: #C5FDE3;
-}
-
-p.yellow,
-h2.yellow {
-  color: #F7F36E;
-}
-
-p.orange,
-h2.orange {
-  color: #E25238;
-}
-
-p.red,
-h2.red {
-  color: #D34246;
-}
-
-p.blue,
-h2.blue {
-  color: #377C89;
-}
-
 a {
   text-decoration: none;
+  color: grey;
 }
 
 a:hover {
   text-decoration: none;
+  color: black;
 }
 
-#to-request,
-#request-appt,
-#create-workshop {
+
+.link {
   text-align: center;
+  opacity: .95;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.navbar-brand {
+  color: rgba(226, 82, 56, 1);
+  font-weight: bold;
+}
+
+.navbar-brand:hover {
+  color: rgba(226, 82, 56, 1)
 }
 
 .dashboard-item {
-  padding: 25px;
+  padding: 18px;
   margin-top: 10px;
 }
 
+.collapsible {
+  opacity: .9;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
 
+.collapsible.active, .collapsible:hover {
+  opacity: 1;
+  outline: none;
+  border: none;
+}
 
+.collapsible:after {
+  content: '\002B';
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.collapsible.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}

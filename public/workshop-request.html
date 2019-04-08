@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>VTS | Profile</title>
+  <title>VTS | Create Workshop</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
@@ -20,7 +20,7 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="dashboard.html">Dashboard</a>
           <a class="nav-item nav-link" href="workshops.html">Workshops</a>
-          <a class="nav-item nav-link" href="request.html">Request</a>
+          <a class="nav-item nav-link active" href="request.html">Request</a>
           <li class="nav-item dropdown">
             <a id="user" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
             <div class="dropdown-menu">
@@ -34,35 +34,72 @@
     </div> 
   </nav>
 
-  <div id="profile" class="container">
-    <div class="row orange dashboard-item">
-      <img class="col-md-3" width="100%"" height="100%" src="./assets/images/geometry2.png" alt="profile image">
-      <div class="col-md-9">
-        <h1 id="name" class="teal">First Last</h1>
-        <p id="role" class="teal">Student</p>
+  <div class="container">
+
+    <div class="teal dashboard-item">
+      <h1>Create Workshop</h1>
+      <form id="signup" name="signup" method="post" action="/signup">
+        <label for="date">Date</label>
+        <input id = "date" class="text" name="date" type="date" />
+        <div class="form-group">
+          <label>Time</label>
+          <select multiple class="form-control" id="hour">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+          </select>
+          <select multiple class="form-control" id="minute">
+            <option>00</option>
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+          </select>
+          <select multiple class="form-control" id="am/pm">
+            <option>am</option>
+            <option>pm</option>
+          </select> <select multiple class="form-control" id="duration">
+            <option>30 min</option>
+            <option>60 min</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <!-- user can only select one subject per appointment -->
+    <div class="yellow dashboard-item">
+      <h2 class="orange">Subject</h2>
+      <input class="btn subject" value="Math" name="subject"/>  
+      <input class="btn subject" value="Science" name="subject"/>  
+      <input class="btn subject" value="English" name="subject"/>  
+      <input class="btn subject" value="History" name="subject"/> 
+    </div>
+
+    <div class="orange dashboard-item">
+      <div class="form-group">
+        <h2 class="teal">Description</h2>
+        <textarea class="form-control" id="description" rows="3"></textarea>
       </div>
     </div>
-    <div class="row yellow dashboard-item">
-      <h2 class="orange">Information</h2>
-      <p id="email" class="orange"></p>
-      <p id="passoword" class="orange"></p>
-      <p id="availability" class="orange"></p>
-      <p id="subjects" class="orange"></p>
-    </div>
-    <div class="row teal dashboard-item">
-      <h2 class="blue">Stats</h2>
-      <p id="rating" class="orange"></p>
-      <p id="member-since" class="blue"></p>
-      <p id="last-login" class="blue"></p>
-    </div>
-  </div>
 
-  <button id="edit" class="blue dashboard-item"><h2 class="teal">Edit Profile</h2></button>
+    <div id="create-workshop" class="blue dashboard-item link">Create Workshop</div>
+
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/dashboard.js"></script>
+  <script src="./js/request.js"></script>
 
 </body>
 </html>
