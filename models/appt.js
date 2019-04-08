@@ -41,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         apptState: {
             type: DataTypes.STRING,
-            defaultValue: 'scheduled',
+            defaultValue: 'Scheduled',
             allowNull: false,
             notEmpty: true
         }
