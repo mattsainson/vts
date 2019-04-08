@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Req = sequelize.define('Request', {
-        userId: {
+        requesterId: {
             type: DataTypes.INTEGER,
             notEmpty: true,
             allowNull: false
         },
-        reqDateTime: {
+        requestDateTime: {
             type: DataTypes.DATE,
             notEmpty: true,
             allowNull: false
@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
             notEmpty: true,
             allowNull: false
         },
-        reqState: {
+        requestState: {
             type: DataTypes.STRING,
             notEmpty: true,
             allowNull: false,
@@ -42,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
             default: 0,
             allowNull: false
         },
-        fullfilledAt: {
+        stateChangedAt: {
             type: DataTypes.DATE,
             allowNull: true
         }
