@@ -28,6 +28,10 @@ div.blue {
   background-color: rgba(55, 124, 137, 1);
 }
 
+div.grey {
+  background-color: lightgrey;
+}
+
 h1 {
   font-size: 22pt;
 }

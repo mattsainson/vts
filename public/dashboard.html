@@ -48,7 +48,7 @@
       </div>
     </a>
 
-    <div id="appointments" class="teal dashboard-item"></div>
+    
     
     <div id="pending" class="yellow dashboard-item"></div>
     
@@ -66,9 +66,8 @@
   <script type="text/javascript">
   
   var userID = 
-    $('#to-request').on('click', function() {
-
-      // Get appointments 
+     // Get appointments 
+    $(document).ready(function() {
       $.get(URL + '/appts/getappointments/' + userID, function(data, err) {
         if (err) {
           throw (err)
@@ -76,7 +75,54 @@
           return(data);
         }
       }).then(function() {
-        var appointments = data.appointments
+        var appts = data.appointments;
+        var appt = appts[i];
+        for(var i = 0; i < appts.length; i++) {
+
+          var $div= $('<div class="dashboard-item">');
+          var $apptType = $('<p>');
+          var $detailsSummary = $('<p>');
+
+          if(appt.apptState === 'scheduled') {
+            $div.attr('class', 'teal');
+            $apptType.attr('class', 'blue');
+            $apptType.text('Scheduled Appointment');
+            $detailsSummary.attr('class', 'blue');
+            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($apptType, $detailSummary);
+            $('#dashboard').append($div);
+          } else if(appts[i].apptState === 'pending') {
+            $div.attr('class', 'yellow');
+            $apptType.attr('class', 'orange');
+            $apptType.text('Pending Appointment');
+            $detailsSummary.attr('class', 'orange');
+            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($apptType, $detailSummary);
+            $('#dashboard').append($div);
+          } else if(appts[i].apptState === 'canceled') {
+            $div.attr('class', 'red');
+            $apptType.attr('class', 'teal');
+            $apptType.text('Canceled Appointment');
+            $detailsSummary.attr('class', 'teal');
+            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($apptType, $detailSummary);
+            $('#dashboard').append($div);
+          } else if(appts[i].apptState === 'completed') {
+            $div.attr('class', 'grey');
+            $apptType.attr('class', 'blue');
+            $apptType.text('Pending Appointment');
+            $detailsSummary.attr('class', 'blue');
+            $detailsSummary.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+            $div.append($apptType, $detailSummary);
+            $('#dashboard').append($div);
+          }
+        }
+
+        $('#appointment').on('click', function() {
+          
+          this.$div.append()
+        });
+
       });
       
     });
