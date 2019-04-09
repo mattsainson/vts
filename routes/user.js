@@ -3,19 +3,11 @@ var db = require('../models');
 
 module.exports = function (app, passport) {
 
-    app.post('/login', function (req, res) {
-        db.Users.findAll({}).then(function (user) {
-            res.json(user);
-        });
-    });
-
     app.post('/signup', function (req, res) {
         var newUser = req.body;
-
-        //lookup existing user by email to see if it already exists
-        //if not, add user
-        //if it does, send back user already exists
-
+        /*lookup existing user by email to see if it already exists
+        if not, add user
+        if it does, send back user already exists*/
         db.Users.findOne({ email: newUser.email })
             .then(function (err, user) {
                 if (user.id === 0) {
@@ -26,34 +18,42 @@ module.exports = function (app, passport) {
                         email: req.body.email,
                         password: hashPassword,
                         name: req.body.name,
-                        userType: req.body.userType
-                    }).then(function () {
+                        isTutor: req.body.isTutor,
+                        isActive: true
+                    }).then(function (id) {
+                        res.status(200);
+                        res.json( {id: id} ).end();
                         // We have access to the new todo as an argument inside of the callback function
-                        res.redirect('dashboard');
-                    });
+                        //passport.authenticate("local-signup", {
+                        });
+                    //});
 
                 } else {
+                    res.status(500);
                     //match for email
 
                 }
             });
-
-
     });
 
-    // app.post('/signup', authController.signup);
-
-    // app.get("/signin", authController.signin);
-
+    app.post('/signin', function (req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
+        db.User({ where: { email: email, password: password } }).then(function(data) {
+            if(data.email === email) {
+                res.status(200);
+                res.json ( {id: data.id} );
+            } else {
+                res.status(500);
+            }
+          });
     // app.post(
     //     "/signup",
-    passport.authenticate("local-signup", {
-        successRedirect: "/dashboard",
-        failureRedirect: "/signup"
-    });
+    // passport.authenticate("local-signup", {
+    // });
     // );
 
-    // app.get("/dashboard", isLoggedIn, authController.dashboard);
+    // app.get("/dashboard", isLoggedIn,);
 
     // app.get("/logout", authController.logout);
     // function isLoggedIn(req, res, next) {
@@ -70,4 +70,5 @@ module.exports = function (app, passport) {
     //         failureRedirect: "/signin"
     //     })
     // );
+});
 };
