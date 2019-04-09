@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+  var userObj = require('userObj');
   
   $('#request-appt').on('click', function() {
     newAppointment();

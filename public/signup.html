@@ -26,51 +26,52 @@
       </div> 
     </nav>
 
-  <div class="container teal dashboard-item">
-    <form id="signup" name="signup" method="post" action="/signup">
-      <!-- <label for="email">Email</label> -->
-      <input id="email" class="text" name="email" type="email" placeholder="Email" />
-      <!-- <label for="name">Name</label> -->
-      <input id="name" name="name" type="text" placeholder="Name" />
-      <!-- <label for="password">Password</label> -->
-      <input id="password" name="password" type="password" placeholder="Password"/>
-    </form>
-  </div>
+  <div class="container">
 
-  <div class="container yellow">
-    <p>I am a</p>
-    <input id="student" class="btn student/tutor" value="Student"/>  
-    <input id="tutor" class="btn student/tutor" value="Tutor"/>  
-  </div>
+    <div class="teal dashboard-item">
+      <form id="signup" name="signup" method="post" action="/signup">
+        <div><input id="email" class="text" type="email" placeholder="Email" /></div>
+        <div><input id="name" class="text" type="text" placeholder="Name" /></div>
+        <div><input id="password" class="text" type="password" placeholder="Password"/></div>
+      </form>
+    </div>
 
-  <div class="container orange">
-    <p>Subjects</p>
-    <input id="math" class="btn subject" value="Math"/>  
-    <input id="science" class="btn subject" value="Science"/>  
-    <input id="english" class="btn subject" value="English"/>  
-    <input id="history" class="btn subject" value="History"/>  
-    <input id="other" class="btn subject" value="Other"/>  
-  </div>
+    <div class="yellow dashboard-item">
+      <p>I am a</p>
+      <input id="student" class="btn student/tutor" value="Student"/>  
+      <input id="tutor" class="btn student/tutor" value="Tutor"/>  
+    </div>
 
-  <div class="container red">
-    <p>Availability</p>
-    <input id="sunday" class="btn day" value="Sunday"/>   
-    <input id="monday" class="btn day" value="Monday"/>
-    <input id="tuesday" class="btn day" value="Tuesday"/>
-    <input id="wednesday" class="btn day" value="Wednesday"/>
-    <input id="thursday" class="btn day" value="Thursday"/>
-    <input id="friday" class="btn day" value="Friday"/>
-    <input id="saturday" class="btn day" value="Saturday"/>
-  </div>
+    <div class="orange dashboard-item">
+      <p>Subjects</p>
+      <input id="math" class="btn subject" value="Math"/>  
+      <input id="science" class="btn subject" value="Science"/>  
+      <input id="english" class="btn subject" value="English"/>  
+      <input id="history" class="btn subject" value="History"/>  
+      <input id="other" class="btn subject" value="Other"/>  
+    </div>
 
-  <div id="signup" class="container blue">
-      <input class="btn" type="submit" value="Sign Up"/>
+    <div class="red dashboard-item">
+      <p>Availability</p>
+      <input id="sunday" class="btn day" value="Sunday"/>   
+      <input id="monday" class="btn day" value="Monday"/>
+      <input id="tuesday" class="btn day" value="Tuesday"/>
+      <input id="wednesday" class="btn day" value="Wednesday"/>
+      <input id="thursday" class="btn day" value="Thursday"/>
+      <input id="friday" class="btn day" value="Friday"/>
+      <input id="saturday" class="btn day" value="Saturday"/>
+    </div>
+
+    <div id="signup" class="blue dashboard-item link">Sign Up</div>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/user.js"></script>
+  <script src="./js/signup.js"></script>
 
 </body>
 </html>

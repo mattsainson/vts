@@ -7,10 +7,6 @@
   margin-top: 10px;
 }
 
-.row {
-  height: auto;
-}
-
 div.teal,
 button.teal {
   background-color: rgba(197, 253, 227, 1);
@@ -123,4 +119,25 @@ a:hover {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
+}
+
+.profile-name {
+  float: right;
+}
+
+input.text {
+  background: none;
+  color: rgba(55, 124, 137, 1);
+  font-size: 18px;
+  padding: 10px 10px 5px 5px;
+  display: block;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1pt solid  rgba(55, 124, 137, 1);
+  border-radius: 0;
+}
+
+input:focus {
+  border: none;
+  outline: none;
 }

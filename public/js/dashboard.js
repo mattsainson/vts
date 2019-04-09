@@ -1,10 +1,6 @@
 $(document).ready(function() {
 
-  // Store user info for session
-  var userObj = {
-    id: 0,
-    name: '',
-  };
+  var userObj = require('userObj');
 
   // Deployed App URL
   var URL = 'https://agile-earth-56750.herokuapp.com/';
@@ -27,9 +23,9 @@ $(document).ready(function() {
     if (err) {
       throw (err);
     } else {
-      return(data);
+      populateDashboard(data);
     }
-  }).then(populateDashboard(data));
+  });
 
   // Cancel a scheduled appointment
   $('#cancel-appt').on('click', function() {
