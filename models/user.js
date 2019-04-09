@@ -31,9 +31,14 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
-    status: {
+    isActive: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
+      allowNull: false
+    },
+    isTutor: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false
     }
   });
