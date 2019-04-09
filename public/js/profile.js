@@ -1,8 +1,5 @@
-var userObj = require('userObj');
 
-var URL = 'https://agile-earth-56750.herokuapp.com/';
-
-$.get(URL + '/profile/getprofile/:userid', function(data, err) {
+$.get('/profile/getprofile/:userid', function(data, err) {
   if (err) {
     throw (err);
   } else {
@@ -57,15 +54,13 @@ function editProfile() {
       ]
     } 
   };
- 
-  var URL = 'https://agile-earth-56750.herokuapp.com/';
   
-  $.put(URL + '/profile/updateprofile/:userid', userObj, function(data, err) {
+  $.put('/profile/updateprofile/:userid', userObj, function(data, err) {
     if (err) {
       alert('Incorrect username and/or password');
       throw (err);
     } else {
-      redirect(URL + 'profile.html');
+      redirect('profile.html');
       return('Success: Status(200)');
     }
   });

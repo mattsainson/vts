@@ -1,9 +1,6 @@
-var userObj = require('userObj');
-
-var URL = 'https://agile-earth-56750.herokuapp.com/';
-
 $('#signup').on('click', function() {
   event.preventDefault();
+  console.log('signup clicked');
   signUp();
 });
 
@@ -16,12 +13,12 @@ function signUp() {
     isTutor: $('#hour').children('option:selected').val()
   };
   
-  $.post(URL + '/signin', userObj, function(data, err) {
+  $.post('/signin', userObj, function(data, err) {
     if (err) {
       alert('Incorrect username and/or password');
       throw (err);
     } else {
-      redirect(URL + 'dashboard');
+      redirect(URL + '/dashboard');
       return('Success: Status(200)');
     }
   });
