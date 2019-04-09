@@ -15,8 +15,6 @@ function signUp() {
     password : $('#password').val().trim(),
     isTutor: $('#hour').children('option:selected').val()
   };
- 
-  var URL = 'https://agile-earth-56750.herokuapp.com/';
   
   $.post(URL + '/signin', userObj, function(data, err) {
     if (err) {

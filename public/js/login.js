@@ -19,7 +19,7 @@ function login() {
       alert('Incorrect username and/or password');
       throw (err);
     } else {
-      redirect('/dashboard');
+      redirect('/dashboard.html');
       return('Success: Status(200)');
     }
   });
