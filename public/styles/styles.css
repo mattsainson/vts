@@ -28,7 +28,7 @@ button.orange {
 div.red,
 button.red {
   background-color: rgba(211, 66, 70, 1);
-  color: rgba(197, 253, 227, 1);
+  color: rgba(247, 243, 110, 1);
 }
 
 div.blue,
@@ -44,11 +44,11 @@ button.grey {
 }
 
 h1 {
-  font-size: 22pt;
+  font-size: 30pt;
 }
 
 h2 {
-  font-size: 16pt
+  font-size: 18pt
 }
 
 a {
@@ -65,6 +65,7 @@ a:hover {
 .link {
   text-align: center;
   opacity: .95;
+  font-size: 18pt;
 }
 
 .link:hover {
@@ -81,7 +82,7 @@ a:hover {
 }
 
 .dashboard-item {
-  padding: 18px;
+  padding: 25px;
   margin-top: 10px;
 }
 
@@ -128,6 +129,7 @@ a:hover {
 input.text {
   background: none;
   color: rgba(55, 124, 137, 1);
+  width: 100%;
   font-size: 18px;
   padding: 10px 10px 5px 5px;
   display: block;
@@ -139,5 +141,6 @@ input.text {
 
 input:focus {
   border: none;
+  border-bottom: 1pt solid  rgba(55, 124, 137, 1);
   outline: none;
 }

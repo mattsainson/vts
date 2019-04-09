@@ -10,7 +10,7 @@
 </head>
 
 <body background="./assets/images/geometry2.png">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="#">VTS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +29,7 @@
   <div class="container">
 
     <div class="teal dashboard-item">
+      <h2>Information</h2>
       <form id="signup" name="signup" method="post" action="/signup">
         <div><input id="email" class="text" type="email" placeholder="Email" /></div>
         <div><input id="name" class="text" type="text" placeholder="Name" /></div>
@@ -37,29 +38,11 @@
     </div>
 
     <div class="yellow dashboard-item">
-      <p>I am a</p>
-      <input id="student" class="btn student/tutor" value="Student"/>  
-      <input id="tutor" class="btn student/tutor" value="Tutor"/>  
-    </div>
-
-    <div class="orange dashboard-item">
-      <p>Subjects</p>
-      <input id="math" class="btn subject" value="Math"/>  
-      <input id="science" class="btn subject" value="Science"/>  
-      <input id="english" class="btn subject" value="English"/>  
-      <input id="history" class="btn subject" value="History"/>  
-      <input id="other" class="btn subject" value="Other"/>  
-    </div>
-
-    <div class="red dashboard-item">
-      <p>Availability</p>
-      <input id="sunday" class="btn day" value="Sunday"/>   
-      <input id="monday" class="btn day" value="Monday"/>
-      <input id="tuesday" class="btn day" value="Tuesday"/>
-      <input id="wednesday" class="btn day" value="Wednesday"/>
-      <input id="thursday" class="btn day" value="Thursday"/>
-      <input id="friday" class="btn day" value="Friday"/>
-      <input id="saturday" class="btn day" value="Saturday"/>
+      <h2>I am a</h2>
+      <select name="student/tutor" id="isTutor">
+        <option value="Student">Student</option>
+        <option value="Tutor">Tutor</option>
+      </select>
     </div>
 
     <div id="signup" class="blue dashboard-item link">Sign Up</div>

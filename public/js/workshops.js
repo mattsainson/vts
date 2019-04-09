@@ -1,0 +1,1 @@
+var userObj = require('userObj');

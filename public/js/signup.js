@@ -1,17 +1,19 @@
 var userObj = require('userObj');
 
-$('#login').on('click', function() {
+$('#signup').on('click', function() {
   event.preventDefault();
-  login();
+  signUp();
 });
 
-function login() {
+function signUp() {
 
   userObj = {
+    name : $('#name').val().trim(),
     email : $('#email').val().trim(),
-    password : $('#password').val().trim()
+    password : $('#password').val().trim(),
+    isTutor: $('#hour').children('option:selected').val();
   };
-
+ 
   var URL = 'https://agile-earth-56750.herokuapp.com/';
   
   $.post(URL + '/signin', userObj, function(data, err) {
