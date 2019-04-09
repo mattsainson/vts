@@ -1,7 +1,7 @@
 // var authController = require('../controllers/authcontroller.js');
 var db = require('../models');
 
-module.exports = function (app, passport) {
+module.exports = function (app) {
 
     app.post('/signup', function (req, res) {
         var newUser = req.body;
