@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body background="./assets/images/geometry2.png">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="dashboard.html">VTS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,30 +37,28 @@
   <div id="dashboard" class="container">
 
     <a href="request.html">
-      <div id="to-request" class="blue dashboard-item">
-        <p class="teal">Request Appointment +</p>
-      </div>
+      <div class="blue dashboard-item link student">Request Appointment +</div>
     </a>
 
-    <div id="appointments" class="teal dashboard-item"></div>
+    <a href="workshop-request.html">
+        <div class="blue dashboard-item link tutor">Create Workshop +</div>
+    </a>
+
     
-    <div id="pending" class="yellow dashboard-item"></div>
-    
-    <div id="cancelled" class="red dashboard-item"></div>
-    
-    <div id="past" class="grey dashboard-item"></div>
+    <button class="collapsible yellow dashboard-item">Appointment Summary</button>
+    <div class="content yellow">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <button class="red">Cancel</button>
+    </div>
 
   </div> <!--end dashboard-->
 
-  <script type="text/javascript">
-    $('#to-request').on('click', function() {
-
-    });
-  </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/user.js"></script>
+  <script src="./js/dashboard.js"></script>
 
 </body>
 </html>
