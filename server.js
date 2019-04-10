@@ -2,8 +2,8 @@ require("dotenv").config();
 var express = require("express");
 // var exphbs = require("express-handlebars");
 var passport = require("passport");
-var session = require("express-session");
-var LocalStrategy = require("passport-local").Strategy;
+// var session = require("express-session");
+// var LocalStrategy = require("passport-local").Strategy;
 var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 //load passport strategies
-require("./config/passport.js")(passport, db.user);
+//require("./config/passport.js")(passport, db.user);
 
 //Sync Database
 db.sequelize
