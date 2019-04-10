@@ -3,6 +3,7 @@ var express = require("express");
 // var exphbs = require("express-handlebars");
 var passport = require("passport");
 var session = require("express-session");
+var LocalStrategy = require("passport-local").Strategy;
 var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
@@ -60,6 +61,109 @@ db.sequelize.sync(syncOptions).then(function() {
       PORT
     );
   });
+
+  db.User.create( {
+    email: 'user1@vts.com',
+    password: '123',
+    name: 'user1',
+    rank: 100,
+    lastLoginAt: '2019-01-01',
+    isActive: true
+  } );
+
+  db.User.create( {
+    email: 'user2@vts.com',
+    password: '123',
+    name: 'user2',
+    rank: 100,
+    lastLoginAt: '2019-01-01',
+    isActive: true
+  } );
+
+  db.User.create( {
+    email: 'tutor@vts.com',
+    password: '123',
+    name: 'tutor',
+    tutorConstraints: 'available: {["Sun","Mon","Tue","Wed","Thur","Fri","Sat"], subjects: ["Math","English","History","Science"]}',
+    rank: 79.3,
+    lastLoginAt: '2019-01-01',
+    isActive: true,
+    isTutor: true
+  } );
+
+  db.Request.create( {
+    requesterId: 1,
+    requestDateTime: '2019-01-01',
+    durationMin: 25,
+    subject: 'Math',
+    desc: 'whatever',
+    requestState: 'Pending',
+    apptId: 0,
+    tutorId: 0
+     } );
+
+     db.Request.create( {
+       requesterId: 1,
+       requestDateTime: '2019-01-02',
+       durationMin: 30,
+       subject: 'English',
+       desc: 'please respond, I have a big test coming up',
+       requestState: 'Pending',
+       apptId: 0,
+       tutorId: 0
+     } );
+
+     db.Appointment.create( {
+       schedDateTime: '2019-01-01',
+       durationSchedMin: 25,
+       durationActualMin: 0,
+       url: 'www.vts.com',
+       subject: 'Math',
+       desc: 'math appt',
+       requestId: 1,
+       maxAttendees: 2,
+       apptState: 'Scheduled'
+     } );
+
+     db.Appointment.create( {
+       schedDateTime: '2019-01-02',
+       durationSchedMin: 30,
+       durationActualMin: 0,
+       url: 'www.vts.com',
+       subject: 'English',
+       desc: 'English',
+       requestId: 1,
+       maxAttendees: 2,
+       apptState: 'Scheduled'
+     } );
+
+     db.Attendee.create( {
+       apptId: 1,
+       attendeeId: 1,
+       isTutor: false,
+       isHere: false,
+     } );
+
+     db.Attendee.create( {
+       apptId: 1,
+       attendeeId: 3,
+       isTutor: true,
+       isHere: false
+     } );
+
+     db.Rating.create( {
+       raterId: 1,
+       ratedId: 3,
+       rating: 5,
+       apptId: 1,      
+     } );
+
+     db.Rating.create( {
+       raterId: 3,
+       ratedId: 1,
+       rating: 5,
+       apptId: 1
+     } );
 });
 
 module.exports = app;
