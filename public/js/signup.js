@@ -1,3 +1,4 @@
+
 $('#signup').on('click', function() {
   event.preventDefault();
   console.log('signup clicked');
@@ -10,15 +11,15 @@ function signUp() {
     name : $('#name').val().trim(),
     email : $('#email').val().trim(),
     password : $('#password').val().trim(),
-    isTutor: $('#hour').children('option:selected').val()
+    isTutor: $('#isTutor').children('option:selected').val()
   };
   
-  $.post('/signin', userObj, function(data, err) {
+  $.post('/signup', userObj, function(err, res) {
     if (err) {
-      alert('Incorrect username and/or password');
       throw (err);
     } else {
-      redirect(URL + '/dashboard');
+      userObj.id = res.id;
+      redirect('/dashboard.html');
       return('Success: Status(200)');
     }
   });

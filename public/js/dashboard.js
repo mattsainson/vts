@@ -3,7 +3,7 @@ $(document).ready(function() {
   var userObj = require('userObj');
 
   // Get UserId and customize page for user
-  $.get('/profile/getprofile/:userid', function(data, err) {
+  $.get('/profile/getprofile/' + userObj.id , function(data, err) {
     if (err) {
       throw (err);
     } else {
@@ -16,7 +16,7 @@ $(document).ready(function() {
   });
 
   // Get appointments
-  $.get('/appts/getappointments/' + userObj.id, function(data, err) {
+  $.get('/appointment/getappointments/' + userObj.id, function(data, err) {
     if (err) {
       throw (err);
     } else {
