@@ -1,5 +1,5 @@
 
-$('#signup').on('click', function() {
+$('#signup').on('click', function () {
   event.preventDefault();
   console.log('signup clicked');
   signUp();
@@ -7,16 +7,15 @@ $('#signup').on('click', function() {
 
 function signUp() {
   userObj = {
-    name : $('#name').val().trim(),
-    email : $('#email').val().trim(),
-    password : $('#password').val().trim(),
+    name: $('#name').val().trim(),
+    email: $('#email').val().trim(),
+    password: $('#password').val().trim(),
     isTutor: $('#isTutor').children('option:selected').val()
   };
-  $.post('/signup', userObj, function(err, res) {
-    if (err) {
-      throw (err);
-    } else {
-      userObj.id = res.id;
-    }
+  $.post('/signup', userObj, function (res) {
+    console.log(res);
+    userObj.id = res.id;
+    window.location.replace('/dashboard.html');
+    // return('Success: Status(200)');
   });
 }
