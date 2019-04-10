@@ -1,3 +1,8 @@
+/* body {
+  background-repeat: no-repeat;
+  background-size: 100%;
+} */
+
 .navbar {
   background-color: #eee;
 }
@@ -10,37 +15,37 @@
 div.teal,
 button.teal {
   background-color: rgba(197, 253, 227, 1);
-  color: rgba(55, 124, 137, 1);
+  color: black;
 }
 
 div.yellow,
 button.yellow {
   background-color: rgba(247, 243, 110, 1);
-  color: rgba(226, 82, 56, 1);
+  /* color: rgba(226, 82, 56, 1); */
 }
 
 div.orange,
 button.orange {
   background-color: rgba(226, 82, 56, 1);
-  color: rgba(197, 253, 227, 1);
+  /* color: rgba(197, 253, 227, 1); */
 }
 
 div.red,
 button.red {
   background-color: rgba(211, 66, 70, 1);
-  color: rgba(247, 243, 110, 1);
+  /* color: rgba(247, 243, 110, 1); */
 }
 
 div.blue,
 button.blue {
-  background-color: rgba(55, 124, 137, 1);
-  color: rgba(197, 253, 227, 1);
+  background-color: black;
+  /* color: rgba(197, 253, 227, 1); */
 }
 
 div.grey,
 button.grey {
   background-color: #eee;
-  color: rgba(55, 124, 137, 1);
+  color: black;
 }
 
 h1 {
@@ -64,28 +69,30 @@ a:hover {
 
 .link {
   text-align: center;
-  opacity: .95;
-  font-size: 18pt;
+  opacity: .9;
+  font-size: 14pt;
 }
 
 .link:hover {
   opacity: 1;
+  color: grey;
 }
 
 .navbar-brand {
-  color: rgba(226, 82, 56, 1);
+  color: black;
   font-weight: bold;
 }
 
-.navbar-brand:hover {
+/* .navbar-brand:hover {
   color: rgba(226, 82, 56, 1)
-}
+} */
 
 .dashboard-item {
   padding: 25px;
   margin-top: 10px;
 }
 
+/* Dashboard collapsible divs */
 .collapsible {
   opacity: .9;
   cursor: pointer;
@@ -128,19 +135,89 @@ a:hover {
 
 input.text {
   background: none;
-  color: rgba(55, 124, 137, 1);
+  color: black;
   width: 100%;
   font-size: 18px;
   padding: 10px 10px 5px 5px;
   display: block;
   box-shadow: none;
   border: none;
-  border-bottom: 1pt solid  rgba(55, 124, 137, 1);
+  border-bottom: 1pt solid  black;
   border-radius: 0;
 }
 
 input:focus {
   border: none;
-  border-bottom: 1pt solid  rgba(55, 124, 137, 1);
+  border-bottom: 1pt solid  black;
   outline: none;
 }
+
+/* Rating Form */
+
+.rating {
+  display: block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+  margin-right: 10px;
+  font-size: 18pt;
+}
+
+.rating label:last-child .icon {
+  color: black;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: rgba(211, 66, 70, 1);
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: black;
+  text-shadow: 0 0 5px rgba(211, 66, 70, 1);
+}
+

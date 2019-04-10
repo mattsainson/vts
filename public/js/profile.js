@@ -55,7 +55,7 @@ function editProfile() {
     } 
   };
   
-  $.put('/profile/updateprofile/:userid', userObj, function(data, err) {
+  $.put('/profile/updateprofile/' + userObj.id, userObj, function(data, err) {
     if (err) {
       alert('Incorrect username and/or password');
       throw (err);
@@ -64,4 +64,5 @@ function editProfile() {
       return('Success: Status(200)');
     }
   });
+
 }
