@@ -15,7 +15,6 @@ function signUp() {
   $.post('/signup', userObj, function (res) {
     console.log(res);
     userObj.id = res.id;
-    window.location.replace('/dashboard.html');
-    // return('Success: Status(200)');
+    return userObj, window.location.replace('/dashboard.html');
   });
 }

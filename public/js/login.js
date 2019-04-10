@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 
 $('#login').on('click', function() {
   event.preventDefault();
@@ -10,14 +10,24 @@ function login() {
     email : $('#email').val().trim(),
     password : $('#password').val().trim()
   };
-  
-  $.post('/signin', userObj, function(err, res) {
-    if (err) {
-      throw (err);
-    } else {
-      userObj.id = res.id;
-      redirect('/dashboard.html');
-      return('Success: Status(200)');
-    }
+
+  $.post('/signin', userObj, function(data) {
+    console.log(data);
+    userObj.id = data.id;
+    localStorage.setItem('id', userObj.id);
+    window.setTimeout(window.location.replace('/dashboard.html'), userObj, 10000); 
   });
+
+  // $.post('/signin', userObj, function(err, data) {
+  //   if (err) {
+  //     $('#err').attr('class', 'red dashboard-item').text('Incorrect username/password 🙄');
+  //     throw (err);
+  //   } else if (data) {
+  //     console.log(data);
+  //     userObj.id = data.id;
+  //     window.setTimeout(redirect('/dashboard.html'), 10000); 
+  //   }
+  // });
 }
+
+});

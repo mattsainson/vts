@@ -1,49 +1,30 @@
 $(document).ready(function() {
+  
+  var id = localStorage.getItem('id');
 
-  var userObj = require('userObj');
-
+  console.log(id);
+  
   // Get UserId and customize page for user
-  $.get('/profile/getprofile/' + userObj.id , function(data, err) {
-    if (err) {
-      throw (err);
-    } else {
-      return('Success: Status(200)', data);
-    }
-  }).then(function(data) {
+  $.get('/profile/getprofile/' + id, function(data) {
+    console.log(data);
     userObj.id = data.id;
     userObj.name = data.name;
     $('#user').text(userObj.name);
   });
 
   // Get appointments
-  $.get('/appointment/getappointments/' + userObj.id, function(data, err) {
-    if (err) {
-      throw (err);
-    } else {
-      populateDashboard(data);
-    }
+  $.get('/appointment/getappointments/' + id, function(data) {
+    populateDashboard(data);
   });
 
   // Cancel a scheduled appointment
   $('#cancel-appt').on('click', function() {
-    $.put('/appointment/cancelappointment/:apptid', function(data, err) {
-      if (err) {
-        throw (err);
-      } else {
-        return('Success: Status(200)');
-      }
-    });
+    $.put('/appointment/cancelappointment/:apptid');
   });
 
   // Cancel an appointment request
   $('cancel-request').on('click', function() {
-    $.put('/request/cancelrequest/:requestid', function(data, err) {
-      if (err) {
-        throw (err);
-      } else {
-        return('Success: Status(200)');
-      }
-    });
+    $.put('/request/cancelrequest/:requestid');
   });
 
 });

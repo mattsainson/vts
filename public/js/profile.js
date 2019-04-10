@@ -1,24 +1,25 @@
 
-$.get('/profile/getprofile/:userid', function(data, err) {
-  if (err) {
-    throw (err);
-  } else {
-    populateProfile(data);
-  }
+
+$.get('/profile/getprofile/' + id, function(data) {
+  populateProfile(data);
 });
 
 function populateProfile(data) {
   var name = data.name;
   var role = data.isTutor;
   var email = data.email;
+  var password = data.password;
   var subjects = data.tutorConstraints.subjects;
   var availability = data.tutorConstraints.available;
   var rating = data.rank;
   var memberSince = data.createdAt;
 
   $('#name').text(name);
+  $('#name').attr('placeholder', name);
   $('#role').text(role);
   $('#email').text(email);
+  $('#email').attr('placeholder', email);
+  $('#password').attr('placeholder', password);
   $('#availability').text(availability);
   $('#subjects').text(subjects);
   $('#rating').text(rating);
@@ -55,7 +56,7 @@ function editProfile() {
     } 
   };
   
-  $.put('/profile/updateprofile/' + userObj.id, userObj, function(data, err) {
+  $.put('/profile/updateprofile/' + id, userObj, function(data, err) {
     if (err) {
       alert('Incorrect username and/or password');
       throw (err);
