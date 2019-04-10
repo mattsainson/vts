@@ -12,26 +12,20 @@ module.exports = function (app) {
             .then(function (err, user) {
                 if (user.id === 0) {
                     //no match for email
-                    console.log(req.body.password);
-                    var hashPassword = "(clearPassword)";
+                    // console.log(req.body.password);
+                    // var hashPassword = "(clearPassword)";
                     db.Users.create({
                         email: req.body.email,
-                        password: hashPassword,
+                        password: req.body.password,
                         name: req.body.name,
                         isTutor: req.body.isTutor,
                         isActive: true
                     }).then(function (id) {
-                        res.status(200);
-                        res.json( {id: id} ).end();
-                        // We have access to the new todo as an argument inside of the callback function
-                        //passport.authenticate("local-signup", {
-                        });
-                    //});
-
+                        res.status(200).send({ id: id });
+                    });
                 } else {
-                    res.status(500);
                     //match for email
-
+                    res.status(500).send({ message: 'existing email' });
                 }
             });
     });
@@ -39,14 +33,59 @@ module.exports = function (app) {
     app.post('/signin', function (req, res) {
         var email = req.body.email;
         var password = req.body.password;
-        db.User({ where: { email: email, password: password } }).then(function(data) {
-            if(data.email === email) {
-                res.status(200);
-                res.json ( {id: data.id} );
+        db.User.findOne({ where: { email: email, password: password } }).then(function (user) {
+            if (user.email === email) {
+                res.status(200).send(user);
             } else {
-                res.status(500);
+                res.status(500).send({ message: 'wrong credentials' });
             }
-          });
+        });
+    });
+
+    app.put('/logout/:userid', function (req, res) {
+        var userId = req.params.userid;
+        db.User.findOne({ where: { id: userId } }).then(function (user) {
+            if (user.id === userId) {
+                res.status(200).send({ message: 'you are logged out' });
+            } else {
+                res.status(500).send({ message: 'id not found' });
+            }
+        });
+    });
+
+    // /profile/getprofile/:userid
+
+    app.get("/profile/getprofile/:userid", function (req, res) {
+        var userId = req.params.userid;
+        db.User.findOne({ where: { id: userId } })
+            .then(function (user) {
+                res.json(user);
+            });
+    });
+
+    app.put("/profile/updateprofile/:userid", function (req, res) {
+        var userId = req.params.userid;
+        db.User.update(
+            {
+                email: req.body.email,
+                password: req.body.password,
+                name: req.body.name,
+                tutorConstraints: req.body.tutorConstraints,
+                isActive: req.body.isActive,
+                isTutor: req.body.isTutor
+            },
+            {
+                where: {
+                    id: userId
+                }
+            }
+        )
+            .then(function (user) {
+                res.status(200).send(user);
+            });
+    });
+
+
     // app.post(
     //     "/signup",
     // passport.authenticate("local-signup", {
@@ -70,5 +109,5 @@ module.exports = function (app) {
     //         failureRedirect: "/signin"
     //     })
     // );
-});
+
 };
