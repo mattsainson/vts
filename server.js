@@ -34,15 +34,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-// Handlebars
-// app.set("view engine", "handlebars");
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     defaultLayout: "main"
-//   })
-// );
-
 // Routes
 // eslint-disable-next-line no-unused-vars
 // var authRoute = require("./routes/auth")(app, passport);
