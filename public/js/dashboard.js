@@ -86,8 +86,8 @@ function populateDashboard(data) {
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
       $url.attr('href', '');
-      // create rating entry form here
-      $content.append($status, $tutor, $description, $url);
+      var $ratingForm = $('<form class="rating"><label><input type="radio" name="stars" value="1" /><span class="icon">★</span></label><label><input type="radio" name="stars" value="2" /><span class="icon">★</span><span class="icon">★</span></label><label><input type="radio" name="stars" value="3" /><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span></label><label><input type="radio" name="stars" value="4" /><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span></label><label><input type="radio" name="stars" value="5" /><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span></label></form>');
+      $content.append($status, $tutor, $description, $url, $ratingForm);
       $collapsible.append($content);
     }
   }
@@ -120,3 +120,8 @@ for (var i = 0; i < coll.length; i++) {
     } 
   });
 }
+
+// JS for rating form
+$(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
