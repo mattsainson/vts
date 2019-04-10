@@ -21,25 +21,25 @@ button.teal {
 div.yellow,
 button.yellow {
   background-color: rgba(247, 243, 110, 1);
-  color: rgba(226, 82, 56, 1);
+  /* color: rgba(226, 82, 56, 1); */
 }
 
 div.orange,
 button.orange {
   background-color: rgba(226, 82, 56, 1);
-  color: rgba(197, 253, 227, 1);
+  /* color: rgba(197, 253, 227, 1); */
 }
 
 div.red,
 button.red {
   background-color: rgba(211, 66, 70, 1);
-  color: rgba(247, 243, 110, 1);
+  /* color: rgba(247, 243, 110, 1); */
 }
 
 div.blue,
 button.blue {
   background-color: black;
-  color: rgba(197, 253, 227, 1);
+  /* color: rgba(197, 253, 227, 1); */
 }
 
 div.grey,
@@ -69,22 +69,23 @@ a:hover {
 
 .link {
   text-align: center;
-  opacity: .95;
+  opacity: .9;
   font-size: 14pt;
 }
 
 .link:hover {
   opacity: 1;
+  color: grey;
 }
 
 .navbar-brand {
-  color: rgba(226, 82, 56, 1);
+  color: black;
   font-weight: bold;
 }
 
-.navbar-brand:hover {
+/* .navbar-brand:hover {
   color: rgba(226, 82, 56, 1)
-}
+} */
 
 .dashboard-item {
   padding: 25px;
