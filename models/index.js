@@ -39,4 +39,18 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//Relations
+db.Request.belongsTo(db.User);  
+db.User.hasMany(db.Request);  
+db.Attendee.belongsTo(db.Appointment);  
+db.Appointment.hasMany(db.Attendee);
+db.Request.hasOne(db.Appointment);  
+db.Appointment.hasOne(db.Request);
+db.Attendee.belongsTo(db.User);  
+db.User.hasMany(db.Attendee);
+db.Rating.belongsTo(db.User);  
+db.User.hasMany(db.Rating);
+db.Rating.belongsTo(db.Appointment);  
+db.Appointment.hasMany(db.Rating);
+
 module.exports = db;
