@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 var fs = require("fs");
 var path = require("path");
@@ -40,17 +40,17 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 //Relations
-db.Request.belongsTo(db.User);  
-db.User.hasMany(db.Request);  
-db.Attendee.belongsTo(db.Appointment);  
-db.Appointment.hasMany(db.Attendee);
-db.Request.hasOne(db.Appointment);  
-db.Appointment.hasOne(db.Request);
-db.Attendee.belongsTo(db.User);  
-db.User.hasMany(db.Attendee);
-db.Rating.belongsTo(db.User);  
-db.User.hasMany(db.Rating);
-db.Rating.belongsTo(db.Appointment);  
-db.Appointment.hasMany(db.Rating);
+// db.Request.hasOne(db.User);  
+// db.User.hasMany(db.Request);  
+// db.Attendee.hasOne(db.Appointment);  
+// db.Appointment.hasMany(db.Attendee);
+// db.Request.hasOne(db.Appointment);  
+// db.Appointment.hasOne(db.Request);
+// db.Attendee.hasOne(db.User);  
+// db.User.hasMany(db.Attendee);
+// db.Rating.hasOne(db.User);  
+// db.User.hasMany(db.Rating);
+// db.Rating.hasOne(db.Appointment);  
+// db.Appointment.hasMany(db.Rating);
 
 module.exports = db;
