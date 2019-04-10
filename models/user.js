@@ -4,9 +4,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       notEmpty: true,
       allowNull: false,
-      validate: {
-        isEmail: true
-      }
     },
     password: {
       type: DataTypes.STRING,
@@ -24,12 +21,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     rank: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
+      allowNull: true,
       default: 0
     },
     lastLoginAt: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     isActive: {
       type: DataTypes.BOOLEAN,

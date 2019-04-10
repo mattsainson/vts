@@ -5,23 +5,24 @@ module.exports = function (app) {
 
     app.post('/signup', function (req, res) {
         var newUser = req.body;
+        console.log(newUser);
         /*lookup existing user by email to see if it already exists
         if not, add user
         if it does, send back user already exists*/
-        db.Users.findOne({ email: newUser.email })
-            .then(function (err, user) {
-                if (user.id === null) {
+        db.User.findOne({where: { email: newUser.email }})
+            .then(function (user) {
+                if (user === null) {
                     //no match for email
                     // console.log(req.body.password);
                     // var hashPassword = "(clearPassword)";
-                    db.Users.create({
-                        email: req.body.email,
-                        password: req.body.password,
-                        name: req.body.name,
-                        isTutor: req.body.isTutor,
+                    db.User.create({
+                        email: newUser.email,
+                        password: newUser.password,
+                        name: newUser.name,
+                        isTutor: newUser.isTutor,
                         isActive: true
-                    }).then(function (id) {
-                        res.status(200).send({ id: id });
+                    }).then(function (user) {
+                        res.status(200).send(user);
                     });
                 } else {
                     //match for email
@@ -34,7 +35,7 @@ module.exports = function (app) {
         var email = req.body.email;
         var password = req.body.password;
         db.User.findOne({ where: { email: email, password: password } }).then(function (user) {
-            if (user.email !== null) {
+            if (user !== null) {
                 res.status(200).send(user);
             } else {
                 res.status(500).send({ message: 'wrong credentials' });
@@ -45,7 +46,7 @@ module.exports = function (app) {
     app.put('/logout/:userid', function (req, res) {
         var userId = req.params.userid;
         db.User.findOne({ where: { id: userId } }).then(function (user) {
-            if (user.id === userId) {
+            if (user !== null) {
                 res.status(200).send({ message: 'you are logged out' });
             } else {
                 res.status(500).send({ message: 'id not found' });
