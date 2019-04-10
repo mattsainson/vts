@@ -10,7 +10,7 @@ module.exports = function (app) {
         if it does, send back user already exists*/
         db.Users.findOne({ email: newUser.email })
             .then(function (err, user) {
-                if (user.id === 0) {
+                if (user.id === null) {
                     //no match for email
                     // console.log(req.body.password);
                     // var hashPassword = "(clearPassword)";
@@ -34,7 +34,7 @@ module.exports = function (app) {
         var email = req.body.email;
         var password = req.body.password;
         db.User.findOne({ where: { email: email, password: password } }).then(function (user) {
-            if (user.email === email) {
+            if (user.email !== null) {
                 res.status(200).send(user);
             } else {
                 res.status(500).send({ message: 'wrong credentials' });
