@@ -30,7 +30,7 @@
 
     <div class="teal dashboard-item">
       <h2>Information</h2>
-      <form id="signup" name="signup" method="post" action="/signup">
+      <form name="signup" method="post" action="/signup">
         <div><input id="email" class="text" type="email" placeholder="Email" /></div>
         <div><input id="name" class="text" type="text" placeholder="Name" /></div>
         <div><input id="password" class="text" type="password" placeholder="Password"/></div>
@@ -39,9 +39,9 @@
 
     <div class="yellow dashboard-item">
       <h2>I am a</h2>
-      <select multiple name="student/tutor" id="isTutor">
-        <option value="Student">Student</option>
-        <option value="Tutor">Tutor</option>
+      <select id="isTutor">
+        <option value="false">Student</option>
+        <option value="true">Tutor</option>
       </select>
     </div>
 

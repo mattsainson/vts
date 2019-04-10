@@ -29,11 +29,11 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Middleware For Passport
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+// app.use(
+//   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+// ); // session secret
+// app.use(passport.initialize());
+// app.use(passport.session()); // persistent login sessions
 
 // Routes
 // eslint-disable-next-line no-unused-vars
