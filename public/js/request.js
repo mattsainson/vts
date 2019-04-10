@@ -1,10 +1,8 @@
 $(document).ready(function() {
-
-  var userObj = require('userObj');
   
   $('#request-appt').on('click', function() {
     newAppointment();
-    $.post(URL + '/request/newrequest', function(newAppointment, err) {
+    $.post('/request/newrequest', function(newAppointment, err) {
       if (err) {
         throw (err);
       } else {
@@ -15,7 +13,7 @@ $(document).ready(function() {
 
   $('#create-workshop').on('click', function() {
     newAppointment();
-    $.post(URL + '/appointment/newappointment', function(newAppointment, err) {
+    $.post('/appointment/newappointment', function(newAppointment, err) {
       if (err) {
         throw (err);
       } else {

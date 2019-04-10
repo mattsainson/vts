@@ -2,11 +2,8 @@ $(document).ready(function() {
 
   var userObj = require('userObj');
 
-  // Deployed App URL
-  var URL = 'https://agile-earth-56750.herokuapp.com/';
-
   // Get UserId and customize page for user
-  $.get(URL + '/profile/getprofile/:userid', function(data, err) {
+  $.get('/profile/getprofile/:userid', function(data, err) {
     if (err) {
       throw (err);
     } else {
@@ -19,7 +16,7 @@ $(document).ready(function() {
   });
 
   // Get appointments
-  $.get(URL + '/appts/getappointments/' + userObj.id, function(data, err) {
+  $.get('/appts/getappointments/' + userObj.id, function(data, err) {
     if (err) {
       throw (err);
     } else {
@@ -29,7 +26,7 @@ $(document).ready(function() {
 
   // Cancel a scheduled appointment
   $('#cancel-appt').on('click', function() {
-    $.put(URL + '/appointment/cancelappointment/:apptid', function(data, err) {
+    $.put('/appointment/cancelappointment/:apptid', function(data, err) {
       if (err) {
         throw (err);
       } else {
@@ -40,7 +37,7 @@ $(document).ready(function() {
 
   // Cancel an appointment request
   $('cancel-request').on('click', function() {
-    $.put(URL + '/request/cancelrequest/:requestid', function(data, err) {
+    $.put('/request/cancelrequest/:requestid', function(data, err) {
       if (err) {
         throw (err);
       } else {
