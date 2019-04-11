@@ -14,12 +14,10 @@ function login() {
   $.post('/signin', userObj, function(data) {
     console.log(data);
     userObj.id = data.id;
+    userObj.name = data.name;
     localStorage.setItem('id', userObj.id);
-    // window.location.replace('/dashboard.html'); 
-  });
-
-  $.get('/profile/getprofile/' + userObj.id, function(data) {
-    
+    localStorage.setItem('name', userObj.name);
+    window.location.replace('/dashboard.html'); 
   });
 }
 

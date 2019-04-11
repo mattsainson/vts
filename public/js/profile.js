@@ -1,4 +1,6 @@
+var id = localStorage.getItem('id');
 
+$('#user').text(userObj.name);
 
 $.get('/profile/getprofile/' + id, function(data) {
   populateProfile(data);
@@ -17,8 +19,9 @@ function populateProfile(data) {
   $('#name').text(name);
   $('#name').attr('placeholder', name);
   $('#role').text(role);
-  $('#email').text(email);
+  $('#email').text('Email: ' + email);
   $('#email').attr('placeholder', email);
+  $('#password').text('Password: ' + password);
   $('#password').attr('placeholder', password);
   $('#availability').text(availability);
   $('#subjects').text(subjects);
