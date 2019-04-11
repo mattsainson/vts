@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
     rank: {
       type: DataTypes.DECIMAL,
       allowNull: true,
-      default: 0
+      defaultValue: 0
     },
     lastLoginAt: {
       type: DataTypes.DATE,

@@ -42,7 +42,7 @@ db.Sequelize = Sequelize;
 //Relations
 // db.Request.hasOne(db.User);  
 // db.User.hasMany(db.Request);  
-// db.Attendee.hasOne(db.Appointment);  
+db.Attendee.hasOne(db.Appointment);  
 // db.Appointment.hasMany(db.Attendee);
 // db.Request.hasOne(db.Appointment);  
 // db.Appointment.hasOne(db.Request);
