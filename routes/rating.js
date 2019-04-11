@@ -29,16 +29,14 @@ module.exports = function (app) {
 
     app.put("/rating/updaterating/:ratingid", function (req, res) {
         var ratingId = req.params.ratingid;
+        console.log('rating',req.body.rating);
         db.Rating.update(
             {
-                raterId: req.body.raterId,
-                apptId: req.body.apptId,
                 rating: req.body.rating,
-                //need to set ratedId after getting Attendee.tutorId
             },
             { where: { id: ratingId } })
             .then(function () {
-                res.status(200);
+                res.status(200).end();
             });
     });
 
