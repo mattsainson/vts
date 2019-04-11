@@ -42,6 +42,7 @@ require("./routes/app")(app);
 require("./routes/user")(app);
 require("./routes/appt")(app);
 require("./routes/request")(app);
+require("./routes/rating")(app);
 
 var syncOptions = { force: false };
 

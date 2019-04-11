@@ -34,12 +34,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         apptId: {
             type: DataTypes.INTEGER,
-            default: 0,
+            defaultValue: 0,
             allowNull: false
         },
         tutorId: {
             type: DataTypes.INTEGER,
-            default: 0,
+            defaultValue: 0,
             allowNull: false
         },
         stateChangedAt: {

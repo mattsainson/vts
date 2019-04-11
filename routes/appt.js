@@ -2,11 +2,21 @@ var db = require('../models');
 
 module.exports = function (app) {
 
-    app.post("/appointment/newappointment", function (req, res) {
+    app.post("/appointment/newappointment/:tutorid", function (req, res) {
+        var tutorId = req.params.tutorid;
         var newAppointment = req.body;
+        newAppointment.url = 'http://google.com';
         db.Appointment.create(newAppointment)
             .then(function (appointment) {
-                res.status(200).send(appointment);
+                db.Attendee.create({
+                    apptId: appointment.id,
+                    attendeeId: tutorId,
+                    isTutor: true,
+                })
+                    // eslint-disable-next-line no-unused-vars
+                    .then(function (tutor) {
+                        res.status(200).send(appointment);
+                    });
             });
     });
 
@@ -59,7 +69,7 @@ module.exports = function (app) {
         var apptId = req.params.apptid;
         db.Appointment.findAll({ where: { apptId: apptId } })
             .then(function (attendees) {
-                res.json({attendees: attendees});
+                res.json({ attendees: attendees });
             });
     });
 
