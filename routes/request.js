@@ -13,13 +13,17 @@ module.exports = function (app) {
     //look for users that are tutors
     db.User.findAll({ where: { isTutor: true } })
       .then(function (users) {
-        var constraints = '';
+        var constraints = null;
         var tutorId = 0;
         var highestRank = 0;
         for (var i = 0; i < users.length; i++) {
-          constraints = users[i].available;
+          console.log('users.length',users.length);
+          console.log('tutorConstraints',users[i].tutorConstraints, 'userid', users[i].id);
+          var constraintsStr = users[i].tutorConstraints;
+          var constraintsObj = JSON.parse(constraintsStr);
+          var available = constraintsObj.available;
           //check each one if the request day name is in their constraint
-          if (constraints.indexOf(dayName) !== -1) {
+          if (available.indexOf(dayName) !== -1) {
             if (users[i].rank > highestRank) {
               //if match and rank is higher replace rank and id
               highestRank = users[i].rank;
@@ -100,7 +104,7 @@ module.exports = function (app) {
       { requestState: 'Cancelled' },
       { where: { id: requestId } })
       .then(function () {
-        res.status(200);
+        res.status(200).end();
       });
   });
 
