@@ -15,19 +15,12 @@ function login() {
     console.log(data);
     userObj.id = data.id;
     localStorage.setItem('id', userObj.id);
-    window.setTimeout(window.location.replace('/dashboard.html'), userObj, 10000); 
+    // window.location.replace('/dashboard.html'); 
   });
 
-  // $.post('/signin', userObj, function(err, data) {
-  //   if (err) {
-  //     $('#err').attr('class', 'red dashboard-item').text('Incorrect username/password 🙄');
-  //     throw (err);
-  //   } else if (data) {
-  //     console.log(data);
-  //     userObj.id = data.id;
-  //     window.setTimeout(redirect('/dashboard.html'), 10000); 
-  //   }
-  // });
+  $.get('/profile/getprofile/' + userObj.id, function(data) {
+    
+  });
 }
 
 });

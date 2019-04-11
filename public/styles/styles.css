@@ -41,7 +41,8 @@ button.red {
 }
 
 div.blue,
-button.blue {
+button.blue,
+input.blue {
   background-color: black;
   color: rgba(197, 253, 227, 1);
 }

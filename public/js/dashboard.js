@@ -19,7 +19,7 @@ $(document).ready(function() {
 
   // Cancel a scheduled appointment
   $('#cancel-appt').on('click', function() {
-    $.put('/appointment/cancelappointment/:apptid');
+    $.put('/appointment/cancelappointment/' + this.id);
   });
 
   // Cancel an appointment request
@@ -40,7 +40,8 @@ function populateDashboard(data) {
     var $tutor = $('<p class="dropdown-item">');
     var $description = $('<p class="dropdown-item">');
     var $url = $('<a class="dropdown-item">Appointment Video Link</a>');
-    var $button = $('<button>');
+    var $cancel = $('<button>');
+    var $accept = $('<button>');
     if (appt.apptState === 'Scheduled') {
       $collapsible.attr('class', 'teal');
       $collapsible.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
@@ -48,8 +49,8 @@ function populateDashboard(data) {
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
       $url.attr('href', '');
-      $button.attr({'class': 'red'}, {'id':'cancel-appt'}).text('Cancel');
-      $content.append($status, $tutor, $description, $url, $button);
+      $cancel.attr({'class': 'red'}, {'id':'cancel-appt'}).text('Cancel');
+      $content.append($status, $tutor, $description, $url, $cancel);
       $collapsible.append($content);
       $('#dashboard').append($dropdown);
     } else if (appts[i].apptState === 'Canceled') {
@@ -81,8 +82,9 @@ function populateDashboard(data) {
       $status.text(appt.apptState);
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
-      $button.attr({'class':'red'}, {'id':'cancel-request'}).text('Cancel');
-      $content.append($status, $tutor, $description, $button);
+      $accept.attr({'class': 'teal'}, {'id':'accept-appt'}).text('Confirm');
+      $cancel.attr({'class':'red'}, {'id':'cancel-request'}).text('Cancel');
+      $content.append($status, $tutor, $description, $accept, $cancel);
       $collapsible.append($content);
     }
   }
