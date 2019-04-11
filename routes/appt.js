@@ -30,12 +30,31 @@ module.exports = function (app) {
 
     app.get("/appointment/getappointments/:userid", function (req, res) {
         var attendeeId = req.params.userid;
+        console.log('attendeeId',attendeeId);
         db.Attendee.findAll({
-            where: { attendeeId: attendeeId },
-            include: [{ model: db.Appointment }]
+            where: { attendeeId: attendeeId }
         })
-            .then(function (appointments) {
-                res.json({ appointments: appointments });
+            .then(function (attendees) {
+                //we now have an array of attendee rows
+                //loop through and build an array of appointment rows building an array of apptIds that we'll use to get the appointments
+                var apptIds = [];
+                for(var i=0;i<attendees.length;i++) {
+                    apptIds.push(attendees[i].apptId);
+                }
+                db.Appointment.findAll({ where: { id: apptIds } })
+                .then(function (appointments) {
+                    for(var i=0;i<appointments.length;i++) {
+                        //lookup the matching attendee element so we can add more key/values to it from appointments
+                        var pos = attendees.map(function(e) { return e.apptId; }).indexOf(appointments[i].id);
+                        console.log('pos', pos);
+                        if(pos !== -1) {
+                            // console.log('attendees', attendees[pos]);
+                            appointments[i].isTutor = attendees[pos].isTutor;
+                            appointments[i].isHere = attendees[pos].isHere;
+                        }
+                    }
+                    res.json({ appointments: appointments });
+                });
             });
     });
 
@@ -51,7 +70,7 @@ module.exports = function (app) {
             },
             { where: { id: apptId } })
             .then(function () {
-                res.status(200);
+                res.status(200).end();
             });
     });
 
@@ -61,13 +80,13 @@ module.exports = function (app) {
             { apptState: 'Cancelled' },
             { where: { id: apptId } })
             .then(function () {
-                res.status(200);
+                res.status(200).end();
             });
     });
 
     app.get("/appointment/getattendees/:apptid", function (req, res) {
         var apptId = req.params.apptid;
-        db.Appointment.findAll({ where: { apptId: apptId } })
+        db.Attendee.findAll({ where: { apptId: apptId } })
             .then(function (attendees) {
                 res.json({ attendees: attendees });
             });

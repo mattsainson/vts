@@ -38,7 +38,6 @@ app.use(express.static("public"));
 // eslint-disable-next-line no-unused-vars
 // var authRoute = require("./routes/auth")(app, passport);
 require("./routes/htmlRoutes")(app);
-require("./routes/app")(app);
 require("./routes/user")(app);
 require("./routes/appt")(app);
 require("./routes/request")(app);
@@ -84,7 +83,7 @@ db.sequelize.sync(syncOptions).then(function () {
   //   email: 'tutor@vts.com',
   //   password: '123',
   //   name: 'tutor',
-  //   tutorConstraints: 'available: {["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], subjects: ["Math","English","History","Science"]}',
+  //   tutorConstraints: '"available": {["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "subjects": ["Math","English","History","Science"]}',
   //   rank: 79.3,
   //   lastLoginAt: '2019-01-01',
   //   isActive: true,
@@ -95,7 +94,7 @@ db.sequelize.sync(syncOptions).then(function () {
   //   email: 'tutor2@vts.com',
   //   password: '123',
   //   name: 'tutor',
-  //   tutorConstraints: 'available: {["Sunday"], subjects: ["Math"]}',
+  //   tutorConstraints: '"available": {["Sunday"], "subjects": ["Math"]}',
   //   rank: 50,
   //   lastLoginAt: '2019-01-01',
   //   isActive: true,
