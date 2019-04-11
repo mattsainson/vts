@@ -54,8 +54,6 @@ module.exports = function (app) {
         });
     });
 
-    // /profile/getprofile/:userid
-
     app.get("/profile/getprofile/:userid", function (req, res) {
         var userId = req.params.userid;
         db.User.findOne({ where: { id: userId } })

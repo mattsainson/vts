@@ -12,12 +12,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         isTutor: {
             type: DataTypes.BOOLEAN,
-            default: false,
+            defaultValue: false,
             allowNull: false
         },
         isHere: {
             type: DataTypes.BOOLEAN,
-            default: false,
+            defaultValue: false,
             allowNull: false
         },
         enteredAt: {

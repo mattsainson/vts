@@ -42,6 +42,7 @@ require("./routes/app")(app);
 require("./routes/user")(app);
 require("./routes/appt")(app);
 require("./routes/request")(app);
+require("./routes/rating")(app);
 
 var syncOptions = { force: false };
 
@@ -83,8 +84,19 @@ db.sequelize.sync(syncOptions).then(function () {
   //   email: 'tutor@vts.com',
   //   password: '123',
   //   name: 'tutor',
-  //   tutorConstraints: 'available: {["Sun","Mon","Tue","Wed","Thur","Fri","Sat"], subjects: ["Math","English","History","Science"]}',
+  //   tutorConstraints: 'available: {["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], subjects: ["Math","English","History","Science"]}',
   //   rank: 79.3,
+  //   lastLoginAt: '2019-01-01',
+  //   isActive: true,
+  //   isTutor: true
+  // });
+
+  // db.User.create({
+  //   email: 'tutor2@vts.com',
+  //   password: '123',
+  //   name: 'tutor',
+  //   tutorConstraints: 'available: {["Sunday"], subjects: ["Math"]}',
+  //   rank: 50,
   //   lastLoginAt: '2019-01-01',
   //   isActive: true,
   //   isTutor: true
@@ -97,8 +109,8 @@ db.sequelize.sync(syncOptions).then(function () {
   //   subject: 'Math',
   //   desc: 'whatever',
   //   requestState: 'Pending',
-  //   apptId: 0,
-  //   tutorId: 0
+  //   apptId: 1,
+  //   tutorId: 3
   // });
 
   // db.Request.create({
@@ -108,8 +120,8 @@ db.sequelize.sync(syncOptions).then(function () {
   //   subject: 'English',
   //   desc: 'please respond, I have a big test coming up',
   //   requestState: 'Pending',
-  //   apptId: 0,
-  //   tutorId: 0
+  //   apptId: 2,
+  //   tutorId: 3
   // });
 
   // db.Appointment.create({
@@ -131,7 +143,7 @@ db.sequelize.sync(syncOptions).then(function () {
   //   url: 'www.vts.com',
   //   subject: 'English',
   //   desc: 'English',
-  //   requestId: 1,
+  //   requestId: 2,
   //   maxAttendees: 2,
   //   apptState: 'Scheduled'
   // });
@@ -147,6 +159,20 @@ db.sequelize.sync(syncOptions).then(function () {
   //   apptId: 1,
   //   attendeeId: 3,
   //   isTutor: true,
+  //   isHere: true
+  // });
+
+  // db.Attendee.create({
+  //   apptId: 2,
+  //   attendeeId: 1,
+  //   isTutor: false,
+  //   isHere: false
+  // });
+
+  // db.Attendee.create({
+  //   apptId: 2,
+  //   attendeeId: 3,
+  //   isTutor: true,
   //   isHere: false
   // });
 
@@ -158,11 +184,12 @@ db.sequelize.sync(syncOptions).then(function () {
   // });
 
   // db.Rating.create({
-  //   raterId: 3,
-  //   ratedId: 1,
-  //   rating: 5,
-  //   apptId: 1
+  //   raterId: 1,
+  //   ratedId: 3,
+  //   rating: 3,
+  //   apptId: 2
   // });
+
 });
 
 module.exports = app;
