@@ -12,6 +12,10 @@
   margin-top: 10px;
 }
 
+div {
+  font-size: 14;
+}
+
 div.teal,
 button.teal {
   background-color: rgba(197, 253, 227, 1);
@@ -33,13 +37,14 @@ button.orange {
 div.red,
 button.red {
   background-color: rgba(211, 66, 70, 1);
-  /* color: rgba(247, 243, 110, 1); */
+  color: white;
 }
 
 div.blue,
-button.blue {
+button.blue,
+input.blue {
   background-color: black;
-  /* color: rgba(197, 253, 227, 1); */
+  color: rgba(197, 253, 227, 1);
 }
 
 div.grey,
@@ -69,12 +74,9 @@ a:hover {
 
 .link {
   text-align: center;
-  opacity: .9;
-  font-size: 14pt;
 }
 
 .link:hover {
-  opacity: 1;
   color: grey;
 }
 
@@ -88,7 +90,7 @@ a:hover {
 } */
 
 .dashboard-item {
-  padding: 25px;
+  padding: 18px;
   margin-top: 10px;
 }
 
@@ -133,11 +135,13 @@ a:hover {
   float: right;
 }
 
-input.text {
+/* Form styling */
+input.text,
+input.email,
+input.password {
   background: none;
   color: black;
   width: 100%;
-  font-size: 18px;
   padding: 10px 10px 5px 5px;
   display: block;
   box-shadow: none;

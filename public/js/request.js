@@ -2,39 +2,43 @@ $(document).ready(function() {
   
   $('#request-appt').on('click', function() {
     newAppointment();
-    $.post('/request/newrequest', function(newAppointment, err) {
+    $.post('/request/newrequest', newAppointment ,function(data) {
       if (err) {
         throw (err);
       } else {
-        return(newAppointment, 'Status: Success(200)');
+        return(data);
       }
     });
   });
 
   $('#create-workshop').on('click', function() {
     newAppointment();
-    $.post('/appointment/newappointment', function(newAppointment, err) {
+    $.post('/appointment/newappointment', newAppointment, function (data) {
       if (err) {
         throw (err);
       } else {
-        return(newAppointment, 'Status: Success(200)');
+        return(data);
       }
     });
   });
 
+  var moment = require('moment');
+  moment().format();
+
   function newAppointment() {
-    var date = $('#date').val();
+    var date = moment($('#date').val(), 'YYYY-MM-DD');
     var hour = $('#hour').children('option:selected').val();
     var minute = $('#minute').children('option:selected').val();
     var amPm = $('#am/pm').children('option:selected').val();
-    var time = [hour, minute, amPm];
+    var time = moment(hour+ ':' + minute + amPm, 'HH:MM');
+    var dateTime = [date + '' + time ];
     var duration = $('#duration').children('option:selected').val();
     var subject = $('input[subject]:checked').val();
     var description = $('#description').val().trim();
 
     var newAppointment = {
       requesterId: userObj.id,
-      requestDateTime: [date, time],
+      requestDateTime: dateTime,
       durationMin: duration,
       subject: subject,
       desc: description
