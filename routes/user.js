@@ -79,8 +79,9 @@ module.exports = function (app) {
                 }
             }
         )
+            // eslint-disable-next-line no-unused-vars
             .then(function (user) {
-                res.status(200).send(user);
+                res.status(200).end();
             });
     });
 
