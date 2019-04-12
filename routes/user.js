@@ -64,12 +64,13 @@ module.exports = function (app) {
 
     app.put("/profile/updateprofile/:userid", function (req, res) {
         var userId = req.params.userid;
+        console.log('tutorConstraints',req.body.email);
         db.User.update(
             {
                 email: req.body.email,
                 password: req.body.password,
                 name: req.body.name,
-                tutorConstraints: req.body.tutorConstraints,
+                tutorConstraints: JSON.stringify(req.body.tutorConstraints),
                 isActive: req.body.isActive,
                 isTutor: req.body.isTutor
             },
