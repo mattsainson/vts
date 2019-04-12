@@ -1,3 +1,4 @@
+
 // Store user info for session
 var id = localStorage.getItem('id');
 var name = localStorage.getItem('name');
@@ -13,7 +14,14 @@ $('#user').text(name);
 
 // Logout on click
 $('#logout').on('click', function() {
-  localStorage.clear();
-  $.put('/logout/' + id);
+  $.ajax({
+    type: 'PUT',
+    url: '/logout/' + id,
+    success: function(data) {
+      console.log(data);
+      localStorage.clear();
+      window.location.replace('/login');
+    }
+  });
 });
 

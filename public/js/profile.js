@@ -1,3 +1,4 @@
+var id = localStorage.getItem('id');
 
 $.get('/profile/getprofile/' + id, function(data) {
   populateProfile(data);
@@ -10,11 +11,10 @@ function populateProfile(data) {
   var role = data.isTutor;
   var email = data.email;
   var password = data.password;
-  var tutorConstraints = data.tutorConstraints;
-  var json = JSON.parse(tutorConstraints);
-  console.log(json);
+  var availability = data.tutorConstraints;
+  var subjects = data.tutorConstraints;
   var rating = data.rank;
-  var memberSince = moment.format(data.createdAt);
+  var memberSince = data.createdAt;
 
   $('#name').text(name);
   $('#name').attr('placeholder', name);
