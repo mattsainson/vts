@@ -1,5 +1,9 @@
 require("dotenv").config();
 var express = require("express");
+// eslint-disable-next-line no-unused-vars
+var adapter = require("webrtc-adapter");
+
+// import adapter from 'webrtc-adapter';
 // var exphbs = require("express-handlebars");
 // var passport = require("passport");
 // var session = require("express-session");
