@@ -30,7 +30,7 @@ module.exports = function (app) {
 
     app.get("/appointment/getappointments/:userid", function (req, res) {
         var attendeeId = req.params.userid;
-        console.log('attendeeId',attendeeId);
+        // console.log('attendeeId',attendeeId);
         db.Attendee.findAll({
             where: { attendeeId: attendeeId }
         })
@@ -46,13 +46,21 @@ module.exports = function (app) {
                     for(var i=0;i<appointments.length;i++) {
                         //lookup the matching attendee element so we can add more key/values to it from appointments
                         var pos = attendees.map(function(e) { return e.apptId; }).indexOf(appointments[i].id);
-                        console.log('pos', pos);
+                        // console.log('pos', pos);
                         if(pos !== -1) {
                             // console.log('attendees', attendees[pos]);
+                            appointments[i] = appointments[i].toJSON();
                             appointments[i].isTutor = attendees[pos].isTutor;
                             appointments[i].isHere = attendees[pos].isHere;
+                            // console.log(appointments[i].id);
+                            // console.log(appointments[i].isHere);
                         }
                     }
+                    // var copy_obj = {}
+                    // Object.keys(appointments).forEach((item) => {
+                    //     console.log(appointments[item]);
+                    // })
+                    // console.log(appointments[1].toJSON());
                     res.json({ appointments: appointments });
                 });
             });
