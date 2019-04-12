@@ -80,7 +80,7 @@ module.exports = function (app) {
             }
         )
             .then(function (user) {
-                res.status(200).send(user);
+                res.status(200).end();
             });
     });
 
