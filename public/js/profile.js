@@ -1,28 +1,32 @@
+var id = localStorage.getItem('id');
 
-$.get('/profile/getprofile/:userid', function(data, err) {
-  if (err) {
-    throw (err);
-  } else {
-    populateProfile(data);
-  }
+$.get('/profile/getprofile/' + id, function(data) {
+  populateProfile(data);
 });
 
 function populateProfile(data) {
+  console.log(data);
+
   var name = data.name;
   var role = data.isTutor;
   var email = data.email;
-  var subjects = data.tutorConstraints.subjects;
-  var availability = data.tutorConstraints.available;
+  var password = data.password;
+  var availability = data.tutorConstraints;
+  var subjects = data.tutorConstraints;
   var rating = data.rank;
   var memberSince = data.createdAt;
 
   $('#name').text(name);
+  $('#name').attr('placeholder', name);
   $('#role').text(role);
-  $('#email').text(email);
-  $('#availability').text(availability);
-  $('#subjects').text(subjects);
-  $('#rating').text(rating);
-  $('#member-since').text(memberSince);
+  $('#email').text('Email: ' + email);
+  $('#email').attr('placeholder', email);
+  $('#password').text('Password: ' + password);
+  $('#password').attr('placeholder', password);
+  $('#availability').text('Availability: ' + availability);
+  $('#subjects').text('Subjects: ' + subjects);
+  $('#rating').text('Rating: ' + rating);
+  $('#member-since').text('Member Since: ' + memberSince);
 }
 
 $('#save').on('click', function() {
@@ -55,7 +59,7 @@ function editProfile() {
     } 
   };
   
-  $.put('/profile/updateprofile/' + userObj.id, userObj, function(data, err) {
+  $.put('/profile/updateprofile/' + id, userObj, function(data, err) {
     if (err) {
       alert('Incorrect username and/or password');
       throw (err);

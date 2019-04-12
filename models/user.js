@@ -26,7 +26,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     lastLoginAt: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
+      defaultValue: 0
     },
     isActive: {
       type: DataTypes.BOOLEAN,
