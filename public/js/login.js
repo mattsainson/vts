@@ -13,10 +13,9 @@ function login() {
 
   $.post('/signin', userObj, function(data) {
     console.log(data);
-    userObj.id = data.id;
-    userObj.name = data.name;
-    localStorage.setItem('id', userObj.id);
-    localStorage.setItem('name', userObj.name);
+    localStorage.setItem('id', data.id);
+    localStorage.setItem('name', data.name);
+    localStorage.setItem('isTutor', data.isTutor);
     window.location.replace('/dashboard.html'); 
   });
 }

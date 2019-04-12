@@ -1,20 +1,20 @@
-var id = localStorage.getItem('id');
-
-$('#user').text(userObj.name);
 
 $.get('/profile/getprofile/' + id, function(data) {
   populateProfile(data);
 });
 
 function populateProfile(data) {
+  console.log(data);
+
   var name = data.name;
   var role = data.isTutor;
   var email = data.email;
   var password = data.password;
-  var subjects = data.tutorConstraints.subjects;
-  var availability = data.tutorConstraints.available;
+  var tutorConstraints = data.tutorConstraints;
+  var json = JSON.parse(tutorConstraints);
+  console.log(json);
   var rating = data.rank;
-  var memberSince = data.createdAt;
+  var memberSince = moment.format(data.createdAt);
 
   $('#name').text(name);
   $('#name').attr('placeholder', name);
@@ -23,10 +23,10 @@ function populateProfile(data) {
   $('#email').attr('placeholder', email);
   $('#password').text('Password: ' + password);
   $('#password').attr('placeholder', password);
-  $('#availability').text(availability);
-  $('#subjects').text(subjects);
-  $('#rating').text(rating);
-  $('#member-since').text(memberSince);
+  $('#availability').text('Availability: ' + availability);
+  $('#subjects').text('Subjects: ' + subjects);
+  $('#rating').text('Rating: ' + rating);
+  $('#member-since').text('Member Since: ' + memberSince);
 }
 
 $('#save').on('click', function() {

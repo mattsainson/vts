@@ -2,16 +2,6 @@ $(document).ready(function() {
   
   var id = localStorage.getItem('id');
 
-  console.log(id);
-  
-  // Get UserId and customize page for user
-  $.get('/profile/getprofile/' + id, function(data) {
-    console.log(data);
-    userObj.id = data.id;
-    userObj.name = data.name;
-    $('#user').text(userObj.name);
-  });
-
   // Get appointments
   $.get('/appointment/getappointments/' + id, function(data) {
     populateDashboard(data);
@@ -24,7 +14,7 @@ $(document).ready(function() {
 
   // Cancel an appointment request
   $('cancel-request').on('click', function() {
-    $.put('/request/cancelrequest/:requestid');
+    $.put('/request/cancelrequest/' + this.id);
   });
 
 });
