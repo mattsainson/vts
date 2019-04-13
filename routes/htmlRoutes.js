@@ -22,6 +22,10 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/video.html"));
   });
 
+  app.get("/profile", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/profile.html"));
+  });
+
   // Render 404 page for any unmatched routes
   // app.get("*", function (req, res) {
   //   res.send("404 not found");

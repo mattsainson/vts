@@ -6,7 +6,7 @@ var isTutor = localStorage.getItem('isTutor');
 
  // App display is slightly different for students and tutors
 if(isTutor === false) {
-  $('.tutor').hide();
+  $('div.tutor').hide();
 }
 
 // Add user name to nav bar

@@ -1,6 +1,6 @@
-var id = localStorage.getItem('id');
+var id = localStorage.getItem("id");
 
-$.get('/profile/getprofile/' + id, function(data) {
+$.get("/profile/getprofile/" + id, function(data) {
   populateProfile(data);
 });
 
@@ -8,65 +8,93 @@ function populateProfile(data) {
   console.log(data);
 
   var name = data.name;
-  var role = data.isTutor;
-  var email = data.email;
-  var password = data.password;
-  var availability = data.tutorConstraints;
-  var subjects = data.tutorConstraints;
-  var rating = data.rank;
-  var memberSince = data.createdAt;
+  $("#name").text(name);
+  $("#name").val(name);
 
-  $('#name').text(name);
-  $('#name').attr('placeholder', name);
-  $('#role').text(role);
-  $('#email').text('Email: ' + email);
-  $('#email').attr('placeholder', email);
-  $('#password').text('Password: ' + password);
-  $('#password').attr('placeholder', password);
-  $('#availability').text('Availability: ' + availability);
-  $('#subjects').text('Subjects: ' + subjects);
-  $('#rating').text('Rating: ' + rating);
-  $('#member-since').text('Member Since: ' + memberSince);
+  var role = data.isTutor;
+  if (role === false) {
+    $("#role").text("Student");
+  } else {
+    $("#role").text("Tutor");
+  }
+
+  var email = data.email;
+  $("#email").text("Email: " + email);
+  $("#email").val(email);
+
+  var password = data.password;
+  $("#password").text("Password: " + password);
+  $("#password").val(password);
+
+  var availability = data.tutorConstraints;
+  $("#availability").text("Availability: " + availability);
+
+  var subjects = data.tutorConstraints;
+  $("#subjects").text("Subjects: " + subjects);
+
+  var rating = data.rank;
+  $("#rating").text("Rating: " + rating);
+
+  var memberSince = data.createdAt;
+  $("#member-since").text("Member Since: " + memberSince);
 }
 
-$('#save').on('click', function() {
+$("#save").on("click", function() {
   event.preventDefault();
   editProfile();
 });
 
 function editProfile() {
-  userObj = {
-    name : $('#name').val().trim(),
-    email : $('#email').val().trim(),
-    password : $('#password').val().trim(),
-    isTutor: $('#isTutor').children('option:selected').val(),
-    tutorConstraints: {
-      subject: [
-        $('input[subject1]:checked').val(),
-        $('input[subject2]:checked').val(),
-        $('input[subject3]:checked').val(),
-        $('input[subject4]:checked').val(),
-      ],
-      availability: [
-        $('input[availability1]:checked').val(),
-        $('input[availability2]:checked').val(),
-        $('input[availability3]:checked').val(),
-        $('input[availability4]:checked').val(),
-        $('input[availability5]:checked').val(),
-        $('input[availability6]:checked').val(),
-        $('input[availability7]:checked').val(),
-      ]
-    } 
-  };
-  
-  $.put('/profile/updateprofile/' + id, userObj, function(data, err) {
-    if (err) {
-      alert('Incorrect username and/or password');
-      throw (err);
-    } else {
-      redirect('profile.html');
-      return('Success: Status(200)');
-    }
+  var subjects = [];
+  $.each($("input[name='subject[]']:checked"), function() {
+    subjects.push($(this).val());
+    // or you can do something to the actual checked checkboxes by working directly with  'this'
+    // something like $(this).hide() (only something useful, probably) :P
   });
+  console.log('subjects',subjects);
 
+  var available = [];
+  $.each($("input[name='available[]']:checked"), function() {
+    available.push($(this).val());
+    // or you can do something to the actual checked checkboxes by working directly with  'this'
+    // something like $(this).hide() (only something useful, probably) :P
+  });
+  console.log('available',available);
+
+  console.log("profile saved");
+  var tcObj = {
+    'subjects': subjects,
+    'available': available
+  };
+  var tutorConstraints = JSON.stringify(tcObj);
+
+  var userObj = {
+    name: $("#name")
+      .val()
+      .trim(),
+    email: $("#email")
+      .val()
+      .trim(),
+    password: $("#password")
+      .val()
+      .trim(),
+    isTutor: $("#isTutor")
+      .children("option:selected")
+      .val(),
+    tutorConstraints: tutorConstraints
+  };
+
+  console.log(userObj);
+
+  $.ajax({
+    method: "PUT",
+    url: "/profile/updateprofile/" + id,
+    data: userObj,
+    // success: function(data) {
+    // console.log('data being received',data);
+    // }
+  // eslint-disable-next-line no-unused-vars
+  }).then(function(res) {
+    window.location.replace('/profile');
+  });
 }

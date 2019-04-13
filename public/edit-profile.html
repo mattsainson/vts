@@ -48,34 +48,34 @@
     <div class="yellow dashboard-item">
       <h2>I am a</h2>
       <select name="student/tutor" id="isTutor">
-        <option value="Student">Student</option>
-        <option value="Tutor">Tutor</option>
+        <option value="false">Student</option>
+        <option value="true">Tutor</option>
       </select>
     </div>
 
     <div class="orange dashboard-item">
         <h2>Subjects</h2>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Math" name="subject1">
-          <label class="form-check-label" for="subject1">
+          <input class="form-check-input subject" type="checkbox" value="Math" name="subject[]">
+          <label class="form-check-label" for="math">
             Math
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Science" name="subject2">
-          <label class="form-check-label" for="subject2">
+          <input class="form-check-input subject" type="checkbox" value="Science" name="subject[]">
+          <label class="form-check-label" for="science">
             Science
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="English" name="subject3">
-          <label class="form-check-label" for="subject3">
+          <input class="form-check-input subject" type="checkbox" value="English" name="subject[]">
+          <label class="form-check-label" for="subject">
             English
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="History" name="subject4">
-          <label class="form-check-label" for="subject4">
+          <input class="form-check-input subject" type="checkbox" value="History" name="subject[]">
+          <label class="form-check-label" for="subject">
             History
           </label>
         </div>
@@ -84,44 +84,44 @@
       <div class="red dashboard-item tutor">
         <h2>Availability</h2>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Sunday" name="availability1">
-          <label class="form-check-label" for="availability1">
+          <input class="form-check-input" type="checkbox" value="Sunday" name="available[]">
+          <label class="form-check-label" for="available">
             Sunday
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Monday" name="availability2">
-          <label class="form-check-label" for="availability2">
+          <input class="form-check-input" type="checkbox" value="Monday" name="available[]">
+          <label class="form-check-label" for="available">
             Monday
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Tuesday" name="availability3">
-          <label class="form-check-label" for="availability3">
+          <input class="form-check-input" type="checkbox" value="Tuesday" name="available[]">
+          <label class="form-check-label" for="available">
             Tuesday
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Wednesday" name="availability4">
-          <label class="form-check-label" for="availability4">
+          <input class="form-check-input" type="checkbox" value="Wednesday" name="available[]">
+          <label class="form-check-label" for="available">
             Wednesday
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Thursday" name="availability5">
-          <label class="form-check-label" for="availability5">
+          <input class="form-check-input" type="checkbox" value="Thursday" name="available[]">
+          <label class="form-check-label" for="available">
             Thursday
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Friday" name="availability6">
-          <label class="form-check-label" for="availability6">
+          <input class="form-check-input" type="checkbox" value="Friday" name="available[]">
+          <label class="form-check-label" for="available">
             Friday
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Saturday" name="availability7">
-          <label class="form-check-label" for="availability7">
+          <input class="form-check-input" type="checkbox" value="Saturday" name="available[]">
+          <label class="form-check-label" for="available">
             Saturday
           </label>
         </div>
