@@ -33,66 +33,58 @@ function populateDashboard(data) {
     var $cancel = $('<button>');
     var $accept = $('<button>');
     if (appt.apptState === 'Scheduled') {
-      $collapsible.attr('class', 'teal');
-      $collapsible.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+      $collapsible.attr('class', 'collapsible dashboard-item teal').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
       $status.text(appt.apptState);
-      $tutor.text(data.requests.tutorId);
+      $tutor.text(data.tutorId);
       $description.text(appt.desc);
       $url.attr('href', '');
       $cancel.attr({'class': 'red'}, {'id':'cancel-appt'}).text('Cancel');
-      $content.append($status, $tutor, $description, $url, $cancel);
-      $collapsible.append($content);
-      $('#dashboard').append($dropdown);
+      $content.attr('class', 'content teal').append($status, $tutor, $description, $url, $cancel);
+      $('#dashboard').append($collapsible, $content);
     } else if (appts[i].apptState === 'Canceled') {
-      $collapsible.attr('class', 'red');
-      $collapsible.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+      $collapsible.attr('collapsible dashboard-item red').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
       $status.text(appt.apptState);
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
-      $content.append($status, $tutor, $description);
-      $collapsible.append($content);
+      $content.attr('class', 'content red').append($status, $tutor, $description);
+      $('#dashboard').append($collapsible, $content);
     } else if (appts[i].apptState === 'Complete') {
-      $collapsible.attr('class', 'grey');
-      $collapsible.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+      $collapsible.attr('class', 'collapsible dashboard-item grey').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
       $status.text(appt.apptState);
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
       $url.attr('href', '');
       var $ratingForm = $('<form class="rating"><label><input type="radio" name="stars" value="1" /><span class="icon">★</span></label><label><input type="radio" name="stars" value="2" /><span class="icon">★</span><span class="icon">★</span></label><label><input type="radio" name="stars" value="3" /><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span></label><label><input type="radio" name="stars" value="4" /><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span></label><label><input type="radio" name="stars" value="5" /><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span><span class="icon">★</span></label></form>');
-      $content.append($status, $tutor, $description, $url, $ratingForm);
-      $collapsible.append($content);
+      $content.attr('class', 'content grey').append($status, $tutor, $description, $url, $ratingForm);
+      $('#dashboard').append($collapsible, $content);
     }
   }
   var requests = data.requests;
   for(var i = 0; i < requests.length; i++) {
     var request = requests[i];
     if (request.requestState === 'Pending') {
-      $collapsible.attr('class', 'yellow');
-      $collapsible.text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
+      $collapsible.attr('class', 'collapsible dashboard-item yellow').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
       $status.text(appt.apptState);
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
       $accept.attr({'class': 'teal'}, {'id':'accept-appt'}).text('Confirm');
       $cancel.attr({'class':'red'}, {'id':'cancel-request'}).text('Cancel');
-      $content.append($status, $tutor, $description, $accept, $cancel);
-      $collapsible.append($content);
+      $content.attr('class', 'content yellow').append($status, $tutor, $description, $accept, $cancel);
+      $('#dashboard').append($collapsible, $content);
     }
   }
 }
 
-// JS for collapsible dashboard items
-var coll = $('.collapsible');
-for (var i = 0; i < coll.length; i++) {
-  coll.on('click', function() {
-    this.classList.toggle('active');
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
+// Collapsible on click
+$('#dashboard').on('click', '.collapsible', function () {
+  this.classList.toggle('active');
+  var content = this.nextElementSibling;
+  if (content.style.maxHeight){
+    content.style.maxHeight = null;
+  } else {
+    content.style.maxHeight = content.scrollHeight + "px";
+  } 
+});
 
 // JS for rating form
 $(':radio').change(function() {
