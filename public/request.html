@@ -37,13 +37,14 @@
 
   <div class="container">
     <div id="success"></div>
-    <div class="teal dashboard-item">
-      <h1>Request Appointment</h1>
-      <form id="signup" name="signup" method="post" action="/signup">
-        <label for="date">Date</label>
-        <input id = "date" class="text" name="date" type="date" />
+    <div class="teal dashboard-item clearfix">
+      <h1>Request Appointment</h1><br>
+      <form id="signup" name="signup">
+        <div for="date">
+          <p>Date</p><input id="date" class="text" name="date" placeholder="mm/dd/yyyy" type="date"/>
+        </div><br>
         <div class="form-group">
-          <label>Time</label>
+          <div>Time</div><br>
           <select multiple class="form-control" id="hour">
             <option>1</option>
             <option>2</option>
@@ -57,18 +58,6 @@
             <option>10</option>
             <option>11</option>
             <option>12</option>
-            <!-- <option>13</option>
-            <option>14</option>
-            <option>15</option>
-            <option>16</option>
-            <option>17</option>
-            <option>18</option>
-            <option>19</option>
-            <option>20</option>
-            <option>21</option>
-            <option>22</option>
-            <option>23</option>
-            <option>24</option> -->
           </select>
           <select multiple class="form-control" id="minute">
             <option>00</option>
@@ -76,7 +65,7 @@
             <option>30</option>
             <option>45</option>
           </select>
-          <select multiple class="form-control" id="am/pm">
+          <select multiple class="form-control" id="amPm">
             <option>am</option>
             <option>pm</option>
           </select> 
@@ -91,16 +80,40 @@
     <!-- user can only select one subject per appointment -->
     <div class="yellow dashboard-item">
       <h2 class="orange">Subject</h2>
-      <input class="btn subject" value="Math" name="subject"/>  
-      <input class="btn subject" value="Science" name="subject"/>  
-      <input class="btn subject" value="English" name="subject"/>  
-      <input class="btn subject" value="History" name="subject"/> 
+      <!-- <input class="btn subject" value="Math"/>  
+      <input class="btn subject" value="Science"/>  
+      <input class="btn subject" value="English"/>  
+      <input class="btn subject" value="History"/>  -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Math" name="subject">
+        <label class="form-check-label" for="math">
+          Math
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Science" name="subject">
+        <label class="form-check-label" for="science">
+          Science
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="English" name="subject">
+        <label class="form-check-label" for="subject">
+          English
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="History" name="subject">
+        <label class="form-check-label" for="subject">
+          History
+        </label>
+      </div>
     </div>
 
     <div class="orange dashboard-item">
       <div class="form-group">
-        <h2 class="teal">Description</h2>
-        <textarea class="form-control" id="description" rows="3"></textarea>
+        <h2>Description</h2>
+        <textarea class="form-control description" id="description" rows="3"></textarea>
       </div>
     </div>
 
@@ -112,7 +125,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="moment.js"></script>
   <script src="./js/user.js"></script>
   <script src="./js/request.js"></script>
 

@@ -4,16 +4,24 @@ $(document).ready(function() {
 
   // Get appointments
   $.get('/appointment/getappointments/' + id, function(data) {
+    console.log(data);
+    populateDashboard(data);
+  });
+
+  $.get('/request/getrequests/' + id, function(data) {
+    console.log(data);
     populateDashboard(data);
   });
 
   // Cancel a scheduled appointment
-  $('#cancel-appt').on('click', function() {
+  $('#dashboard').on('click', '#cancel-appt', function() {
+    console.log('cancel clicked');
     $.put('/appointment/cancelappointment/' + this.id);
   });
 
   // Cancel an appointment request
   $('cancel-request').on('click', function() {
+    console.log('cancel clicked');
     $.put('/request/cancelrequest/' + this.id);
   });
 
@@ -21,24 +29,23 @@ $(document).ready(function() {
 
 // Append uers's appointments to dashboard
 function populateDashboard(data) {
-  var appts = data.appointments;
-  for(var i = 0; i < appts.length; i++) {
-    var appt = appts[i];
-    var $collapsible = $('<button class="collapsible dashboard-item">');
-    var $content = $('<div class="content">');
-    var $status = $('<p class="dropdown-item">');
-    var $tutor = $('<p class="dropdown-item">');
-    var $description = $('<p class="dropdown-item">');
-    var $url = $('<a class="dropdown-item">Appointment Video Link</a>');
+  for(var i = 0; i < data.appointments.length; i++) {
+    var appt = data.appointments[i];
+    var $collapsible = $('<button>');
+    var $content = $('<div>');
+    var $status = $('<p>');
+    var $tutor = $('<p>');
+    var $description = $('<p>');
+    var $url = $('<a>Appointment Video Link</a>');
     var $cancel = $('<button>');
     var $accept = $('<button>');
     if (appt.apptState === 'Scheduled') {
-      $collapsible.attr('class', 'collapsible dashboard-item teal').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
-      $status.text(appt.apptState);
-      $tutor.text(data.tutorId);
-      $description.text(appt.desc);
+      $collapsible.attr('class', 'collapsible dashboard-item teal').text(appt.subject + ' ' + appt.schedDateTime + ' ' + appt.durationSchedMin + 'min');
+      $cancel.attr({'class': 'red cancel'}, {'id':'cancel-appt'}).text('Cancel');
+      $status.text('Status: ' + appt.apptState);
+      $tutor.text('Tutor: ' + data.tutorId);
+      $description.text('Description: ' + appt.desc);
       $url.attr('href', '');
-      $cancel.attr({'class': 'red'}, {'id':'cancel-appt'}).text('Cancel');
       $content.attr('class', 'content teal').append($status, $tutor, $description, $url, $cancel);
       $('#dashboard').append($collapsible, $content);
     } else if (appts[i].apptState === 'Canceled') {
@@ -59,16 +66,16 @@ function populateDashboard(data) {
       $('#dashboard').append($collapsible, $content);
     }
   }
-  var requests = data.requests;
-  for(var i = 0; i < requests.length; i++) {
-    var request = requests[i];
+  
+  for(var i = 0; i < data.requests.length; i++) {
+    var request = data.requests[i];
     if (request.requestState === 'Pending') {
       $collapsible.attr('class', 'collapsible dashboard-item yellow').text(appt.subject, appt.schedDateTime, appt.durationSchedMin);
       $status.text(appt.apptState);
       $tutor.text(data.requests.tutorId);
       $description.text(appt.desc);
       $accept.attr({'class': 'teal'}, {'id':'accept-appt'}).text('Confirm');
-      $cancel.attr({'class':'red'}, {'id':'cancel-request'}).text('Cancel');
+      $cancel.attr({'class':'red cancel'}, {'id':'cancel-request'}).text('Cancel');
       $content.attr('class', 'content yellow').append($status, $tutor, $description, $accept, $cancel);
       $('#dashboard').append($collapsible, $content);
     }
