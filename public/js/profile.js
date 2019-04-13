@@ -59,7 +59,7 @@ function editProfile() {
     // or you can do something to the actual checked checkboxes by working directly with  'this'
     // something like $(this).hide() (only something useful, probably) :P
   });
-  console.log('available',available);
+  console.log('available', available);
 
   console.log("profile saved");
   var tcObj = {
